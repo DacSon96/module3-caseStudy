@@ -51,61 +51,43 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            
             <%--BreadCrumb--%>
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/admin">Product List</a></li>
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Create New Product</li>
                 </ol>
             </nav>
-
-            <%--Search--%>
-            <form action="/admin">
-                <div class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search by Name" name="name"
-                           aria-label="Search">
-                    <button class="btn btn-secondary me-2" type="submit">Search</button>
-                </div>
-            </form>
         </div>
-
-        <%--Content--%>
         <div class="card-body">
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Size</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${products}" var="product">
-                    <tr>
-                        <th scope="row">${product.id}</th>
-                        <td>${product.name}</td>
-                        <td>${product.size}</td>
-                        <td><img src="${product.image}" alt="image" width="50px"></td>
-                        <td>${product.price}</td>
-                        <td>
-                            <a href="/admin?action=edit&id=${product.id}">
-                                <button type="button" class="btn btn-success btn-sm">Edit</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="/admin?action=delete&id=${product.id}">
-                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            <%--Content--%>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Size</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select class="form-select">
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                </form>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary" style="float: right">Create New</button>
