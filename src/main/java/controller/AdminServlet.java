@@ -1,8 +1,11 @@
 package controller;
 
+import model.Category;
 import model.Product;
-import service.admin.AdminService;
-import service.admin.IAdminService;
+import service.category.CategoryService;
+import service.category.ICategoryService;
+import service.product.ProductService;
+import service.product.IProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +18,8 @@ import java.util.List;
 
 @WebServlet(name = "AdminServlet", value = "/admin")
 public class AdminServlet extends HttpServlet {
-    private IAdminService adminService = new AdminService();
+    private IProductService productService = new ProductService();
+    private ICategoryService categoryService = new CategoryService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +41,8 @@ public class AdminServlet extends HttpServlet {
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("admin/create.jsp");
         try {
+            List<Category> categories = categoryService.show();
+            request.setAttribute("categories", categories);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -47,9 +53,9 @@ public class AdminServlet extends HttpServlet {
         String name = request.getParameter("name");
         List<Product> products;
         if (name == null || name.equals("")) {
-            products = adminService.show();
+            products = productService.show();
         } else {
-            products = adminService.searchProductByName(name);
+            products = productService.searchProductByName(name);
         }
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("admin/show.jsp");
@@ -62,6 +68,39 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "create": {
+                createNewProduct(request, response);
+                break;
+            }
+        }
+    }
 
+    private void createNewProduct(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String size = request.getParameter("size");
+        String image = request.getParameter("image");
+        double price = Double.parseDouble(request.getParameter("price"));
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        boolean isCreated = productService.create(new Product(name, size, image, price, categoryId));
+        String message = "";
+        if (isCreated) {
+            message = "Success!";
+        } else {
+            message = "Failed!";
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/create.jsp");
+        request.setAttribute("message", message);
+        List<Category> categories = categoryService.show();
+        request.setAttribute("categories", categories);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

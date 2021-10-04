@@ -49,50 +49,61 @@
 
 <%--Content--%>
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <%--BreadCrumb--%>
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create New Product</li>
-                </ol>
-            </nav>
-        </div>
-        <div class="card-body">
-            <%--Content--%>
+    <form method="post">
+        <div class="card">
+            <div class="card-header">
+                <%--BreadCrumb--%>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/admin" style="text-decoration: none">Admin</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="/admin?action=create" style="text-decoration: none">Create New Product</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="card-body">
+                <%--Content--%>
                 <form>
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Size</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" name="size" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Image</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" name="image" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Price</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" name="price" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Category</label>
-                        <select class="form-select">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="form-select" name="categoryId">
+                            <c:forEach items="${categories}" var="category">
+                                <option value="${category.id}">${category.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
 
                 </form>
+            </div>
+            <div class="card-footer">
+                <div style="float: left">
+                    <c:if test="${message != null}">
+                        <p>${message}</p>
+                    </c:if>
+                </div>
+                <button type="submit" class="btn btn-primary" style="float: right">Create New</button>
+            </div>
         </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary" style="float: right">Create New</button>
-        </div>
-    </div>
+    </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"

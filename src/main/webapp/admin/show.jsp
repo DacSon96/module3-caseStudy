@@ -51,12 +51,16 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            
+
             <%--BreadCrumb--%>
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/admin">Product List</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="/admin" style="text-decoration: none">Admin</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a href="/admin" style="text-decoration: none">Product List</a>
+                    </li>
                 </ol>
             </nav>
 
@@ -107,8 +111,12 @@
                 </tbody>
             </table>
         </div>
+
+        <%--Create--%>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary" style="float: right">Create New</button>
+            <a href="/admin?action=create">
+                <button class="btn btn-primary" style="float: right">Create New</button>
+            </a>
         </div>
     </div>
 </div>
