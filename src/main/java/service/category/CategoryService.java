@@ -31,6 +31,6 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public Category findById(int id) {
-        return null;
+        return categoryDao.findById(id);
     }
 }

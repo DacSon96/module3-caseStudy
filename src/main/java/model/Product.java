@@ -7,6 +7,7 @@ public class Product {
     private String image;
     private double price;
     private int categoryId;
+    Category category;
 
     public Product() {
     }
@@ -74,5 +75,13 @@ public class Product {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

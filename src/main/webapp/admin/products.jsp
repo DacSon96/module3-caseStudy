@@ -84,6 +84,7 @@
                     <th scope="col">Size</th>
                     <th scope="col">Image</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -96,8 +97,9 @@
                         <td>${product.size}</td>
                         <td><img src="${product.image}" alt="image" width="50px"></td>
                         <td>${product.price}</td>
+                        <td>${product.category.name}</td>
                         <td>
-                            <a href="/admin?action=edit&id=${product.id}">
+                            <a href="/admin?action=update&id=${product.id}">
                                 <button type="button" class="btn btn-success btn-sm">Edit</button>
                             </a>
                         </td>

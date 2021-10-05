@@ -2,6 +2,7 @@ package dao.category;
 
 import dao.DBConnection;
 import model.Category;
+import model.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class CategoryDao implements ICategoryDao {
     public static final String SELECT_ALL_CATEGORIES = "SELECT * FROM category";
+    public static final String SELECT_CATEGORY_BY_ID = "SELECT * FROM category WHERE id = ?";
     Connection connection = DBConnection.getConnection();
 
     @Override
@@ -48,6 +50,19 @@ public class CategoryDao implements ICategoryDao {
 
     @Override
     public Category findById(int id) {
-        return null;
+        Category category = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_CATEGORY_BY_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int keyId = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                category = new Category(keyId, name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return category;
     }
 }

@@ -8,5 +8,5 @@ import java.util.List;
 public interface IProductService extends IGeneralService<Product> {
     List<Product> searchProductByName(String name);
 
-    List<Product> searchProductByCategory(int categoryId);
+    List<Product> searchProductByCategoryId(int categoryId);
 }
