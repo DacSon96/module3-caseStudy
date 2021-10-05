@@ -102,9 +102,16 @@ buy one get two pay triple</span>
                 <div class="section-heading">
                     <div class="line-dec"></div>
                     <h1>Nice Shirt Model</h1>
+                    <div class="col-3" style="float: right">
+                        <div class="input-group">
+                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                   aria-describedby="search-addon"/>
+                            <button type="button" class="btn btn-outline-primary">search</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-top: 20px">
                 <div class="owl-carousel owl-theme">
                     <a href="single-product.html">
                         <div class="featured-item">
