@@ -37,6 +37,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#">Category</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Orders</a>
                 </li>
             </ul>
@@ -99,12 +102,12 @@
                         <td>${product.price}</td>
                         <td>${product.category.name}</td>
                         <td>
-                            <a href="/admin?action=update&id=${product.id}">
+                            <a href="/admin?action=product-update&id=${product.id}">
                                 <button type="button" class="btn btn-success btn-sm">Edit</button>
                             </a>
                         </td>
                         <td>
-                            <a href="/admin?action=delete&id=${product.id}">
+                            <a href="/admin?action=product-delete&id=${product.id}">
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </a>
                         </td>
@@ -116,12 +119,13 @@
 
         <%--Create--%>
         <div class="card-footer">
-            <a href="/admin?action=create">
+            <a href="/admin?action=product-create">
                 <button class="btn btn-primary" style="float: right">Create New</button>
             </a>
         </div>
     </div>
 </div>
+<br>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

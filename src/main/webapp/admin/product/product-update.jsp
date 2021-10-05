@@ -59,7 +59,7 @@
                             <a href="/admin" style="text-decoration: none">Admin</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#" style="text-decoration: none">Update Product Information</a>
+                            <a href="#" style="text-decoration: none">Edit Product Information</a>
                         </li>
                     </ol>
                 </nav>
@@ -100,11 +100,12 @@
                         <p>${message}</p>
                     </c:if>
                 </div>
-                <button type="submit" class="btn btn-primary" style="float: right">Update</button>
+                <button type="submit" class="btn btn-primary" style="float: right">Edit</button>
             </div>
         </div>
     </form>
 </div>
+<br>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

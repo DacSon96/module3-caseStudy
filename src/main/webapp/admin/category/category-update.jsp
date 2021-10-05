@@ -59,7 +59,7 @@
                             <a href="/admin" style="text-decoration: none">Admin</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#" style="text-decoration: none">Delete Product</a>
+                            <a href="#" style="text-decoration: none">Edit Product Information</a>
                         </li>
                     </ol>
                 </nav>
@@ -69,24 +69,29 @@
                 <form>
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" value="${product.name}" readonly>
+                        <input type="text" name="name" class="form-control" value="${product.name}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Size</label>
-                        <input type="text" name="size" class="form-control" value="${product.size}" readonly>
+                        <input type="text" name="size" class="form-control" value="${product.size}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Image</label>
-                        <input type="text" name="image" class="form-control" value="${product.image}" readonly>
+                        <input type="text" name="image" class="form-control" value="${product.image}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Price</label>
-                        <input type="text" name="price" class="form-control" value="${product.price}" readonly>
+                        <input type="text" name="price" class="form-control" value="${product.price}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Category</label>
-                        <input type="text" name="categoryId" class="form-control" value="${product.category.name}" readonly>
+                        <select class="form-select" name="categoryId">
+                            <c:forEach items="${categories}" var="category">
+                                <option value="${category.id}">${category.name}</option>
+                            </c:forEach>
+                        </select>
                     </div>
+
                 </form>
             </div>
             <div class="card-footer">
@@ -95,11 +100,12 @@
                         <p>${message}</p>
                     </c:if>
                 </div>
-                <button type="submit" class="btn btn-primary" style="float: right">Delete</button>
+                <button type="submit" class="btn btn-primary" style="float: right">Edit</button>
             </div>
         </div>
     </form>
 </div>
+<br>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

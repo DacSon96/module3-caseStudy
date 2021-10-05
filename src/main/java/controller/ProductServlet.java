@@ -21,7 +21,7 @@ public class ProductServlet extends HttpServlet {
 
 
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/categories.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
