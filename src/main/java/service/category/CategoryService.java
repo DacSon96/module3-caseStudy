@@ -16,17 +16,17 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public boolean create(Category category) {
-        return false;
+        return categoryDao.create(category);
     }
 
     @Override
     public boolean update(int id, Category category) {
-        return false;
+        return categoryDao.update(id, category);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return categoryDao.delete(id);
     }
 
     @Override

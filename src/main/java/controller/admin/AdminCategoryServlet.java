@@ -27,9 +27,64 @@ public class AdminCategoryServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "category-create": {
+                showCategoryCreateForm(request, response);
+                break;
+            }
+            case "category-update": {
+                showCategoryUpdateForm(request, response);
+                break;
+            }
+            case "category-delete": {
+                showCategoryDeleteForm(request, response);
+                break;
+            }
             default: {
                 showCategoryView(request, response);
             }
+        }
+    }
+
+    private void showCategoryDeleteForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Category category = categoryService.findById(id);
+        RequestDispatcher dispatcher;
+        if (category == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else {
+            request.setAttribute("category", category);
+            dispatcher = request.getRequestDispatcher("/admin/category/category-delete.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCategoryUpdateForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Category category = categoryService.findById(id);
+        RequestDispatcher dispatcher;
+        if (category == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else {
+            request.setAttribute("category", category);
+            dispatcher = request.getRequestDispatcher("/admin/category/category-update.jsp");
+        }
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCategoryCreateForm(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/category/category-create.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -57,7 +112,73 @@ public class AdminCategoryServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "category-create": {
+                createNewCategory(request, response);
+                break;
+            }
+            case "category-update": {
+                updateCategoryInfo(request, response);
+                break;
+            }
+            case "category-delete": {
+                deleteOldCategory(request, response);
+                break;
+            }
+        }
+    }
 
+    private void deleteOldCategory(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        boolean isDeleted = categoryService.delete(id);
+        String message = "";
+        if (isDeleted) {
+            message = "Success!";
+        } else {
+            message = "Failed!";
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-delete.jsp");
+        request.setAttribute("message", message);
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateCategoryInfo(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        boolean isUpdated = categoryService.update(id, new Category(name));
+        String message = "";
+        if (isUpdated) {
+            message = "Success!";
+        } else {
+            message = "Failed!";
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-update.jsp");
+        request.setAttribute("message", message);
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createNewCategory(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        boolean isCreated = categoryService.create(new Category(name));
+        String message = "";
+        if (isCreated) {
+            message = "Success!";
+        } else {
+            message = "Failed!";
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-create.jsp");
+        request.setAttribute("message", message);
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 }

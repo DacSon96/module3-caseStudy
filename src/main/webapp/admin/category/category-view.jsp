@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/admin-category">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-order">Orders</a>
+                    <a class="nav-link" href="/admin-order">Order</a>
                 </li>
             </ul>
         </div>
@@ -83,12 +83,12 @@
                         <th scope="row">${category.id}</th>
                         <td>${category.name}</td>
                         <td>
-                            <a href="/admin?action=category-update&id=${category.id}">
+                            <a href="/admin-category?action=category-update&id=${category.id}">
                                 <button type="button" class="btn btn-success btn-sm">Edit</button>
                             </a>
                         </td>
                         <td>
-                            <a href="/admin?action=category-delete&id=${category.id}">
+                            <a href="/admin-category?action=category-delete&id=${category.id}">
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </a>
                         </td>

@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/admin-category">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-order">Orders</a>
+                    <a class="nav-link" href="/admin-order">Order</a>
                 </li>
             </ul>
         </div>

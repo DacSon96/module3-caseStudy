@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/admin-category">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-order">Orders</a>
+                    <a class="nav-link" href="/admin-order">Order</a>
                 </li>
             </ul>
         </div>
@@ -48,10 +48,10 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/admin" style="text-decoration: none">Admin</a>
+                            <a href="/admin-category" style="text-decoration: none">Category</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#" style="text-decoration: none">Create New Product</a>
+                            <a href="#" style="text-decoration: none">Create New</a>
                         </li>
                     </ol>
                 </nav>
@@ -63,27 +63,6 @@
                         <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Size</label>
-                        <input type="text" name="size" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Image</label>
-                        <input type="text" name="image" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Price</label>
-                        <input type="text" name="price" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <select class="form-select" name="categoryId">
-                            <c:forEach items="${categories}" var="category">
-                                <option value="${category.id}">${category.name}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-
                 </form>
             </div>
             <div class="card-footer">
