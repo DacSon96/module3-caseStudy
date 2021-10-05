@@ -1,20 +1,19 @@
 package controller;
 
-import model.Category;
-import model.Product;
-import service.category.CategoryService;
-import service.category.ICategoryService;
-import service.product.ProductService;
-import service.product.IProductService;
-
+import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
+import model.Category;
+import model.Product;
+import service.category.CategoryService;
+import service.category.ICategoryService;
+import service.product.IProductService;
+import service.product.ProductService;
 
 @WebServlet(name = "AdminServlet", value = "/admin")
 public class AdminServlet extends HttpServlet {

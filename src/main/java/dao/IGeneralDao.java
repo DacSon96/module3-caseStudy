@@ -11,5 +11,7 @@ public interface IGeneralDao<T> {
 
     boolean delete(int id);
 
+    boolean save(T t);
+
     T findById(int id);
 }

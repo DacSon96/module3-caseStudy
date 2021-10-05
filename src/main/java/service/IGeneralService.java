@@ -3,13 +3,16 @@ package service;
 import java.util.List;
 
 public interface IGeneralService<T> {
-    List<T> show();
 
-    boolean create(T t);
+  List<T> show();
 
-    boolean update(int id, T t);
+  boolean create(T t);
 
-    boolean delete(int id);
+  boolean update(int id, T t);
 
-    T findById(int id);
+  boolean delete(int id);
+
+  boolean save(T t);
+
+  T findById(int id);
 }

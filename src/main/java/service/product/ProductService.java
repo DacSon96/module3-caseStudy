@@ -39,6 +39,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public boolean save(Product product) {
+        return false;
+    }
+
+    @Override
     public Product findById(int id) {
         Product product = productDao.findById(id);
         Category category = categoryDao.findById(product.getCategoryId());

@@ -30,6 +30,11 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
+    public boolean save(Category category) {
+        return false;
+    }
+
+    @Override
     public Category findById(int id) {
         return categoryDao.findById(id);
     }
