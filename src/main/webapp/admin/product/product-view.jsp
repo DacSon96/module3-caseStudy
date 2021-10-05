@@ -23,27 +23,16 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Shirt</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Hoodie</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-product">Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Category</a>
+                    <a class="nav-link" href="/admin-category">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="/admin-order">Orders</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -59,20 +48,20 @@
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="/admin" style="text-decoration: none">Admin</a>
+                        <a href="/admin-product" style="text-decoration: none">Product</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        <a href="/admin" style="text-decoration: none">Product List</a>
+                        <a href="#" style="text-decoration: none">List</a>
                     </li>
                 </ol>
             </nav>
 
             <%--Search--%>
-            <form action="/admin">
+            <form action="/admin-product">
                 <div class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search by Name" name="name"
                            aria-label="Search">
-                    <button class="btn btn-secondary me-2" type="submit">Search</button>
+                    <button type="submit" class="btn btn-secondary me-2">Search</button>
                 </div>
             </form>
         </div>
@@ -102,12 +91,12 @@
                         <td>${product.price}</td>
                         <td>${product.category.name}</td>
                         <td>
-                            <a href="/admin?action=product-update&id=${product.id}">
+                            <a href="/admin-product?action=product-update&id=${product.id}">
                                 <button type="button" class="btn btn-success btn-sm">Edit</button>
                             </a>
                         </td>
                         <td>
-                            <a href="/admin?action=product-delete&id=${product.id}">
+                            <a href="/admin-product?action=product-delete&id=${product.id}">
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
                             </a>
                         </td>
@@ -119,7 +108,7 @@
 
         <%--Create--%>
         <div class="card-footer">
-            <a href="/admin?action=product-create">
+            <a href="/admin-product?action=product-create">
                 <button class="btn btn-primary" style="float: right">Create New</button>
             </a>
         </div>
@@ -129,6 +118,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
 </body>
 </html>

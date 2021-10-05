@@ -2,7 +2,6 @@ package dao.category;
 
 import dao.DBConnection;
 import model.Category;
-import model.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +13,7 @@ import java.util.List;
 public class CategoryDao implements ICategoryDao {
     public static final String SELECT_ALL_CATEGORIES = "SELECT * FROM category";
     public static final String SELECT_CATEGORY_BY_ID = "SELECT * FROM category WHERE id = ?";
+    public static final String SELECT_CATEGORY_BY_NAME = "SELECT * FROM category WHERE name like ?";
     Connection connection = DBConnection.getConnection();
 
     @Override
@@ -64,5 +64,23 @@ public class CategoryDao implements ICategoryDao {
             e.printStackTrace();
         }
         return category;
+    }
+
+    @Override
+    public List<Category> searchCategoryByName(String name) {
+        List<Category> categories = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_CATEGORY_BY_NAME);
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String keyName = resultSet.getString("name");
+                categories.add(new Category(id, keyName));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categories;
     }
 }

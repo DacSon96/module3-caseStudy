@@ -23,24 +23,16 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Shirt</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Hoodie</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-product">Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="/admin-category">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-order">Orders</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -56,10 +48,10 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/admin" style="text-decoration: none">Admin</a>
+                            <a href="/admin-product" style="text-decoration: none">Product</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#" style="text-decoration: none">Delete Product</a>
+                            <a href="#" style="text-decoration: none">Delete</a>
                         </li>
                     </ol>
                 </nav>
@@ -95,7 +87,7 @@
                         <p>${message}</p>
                     </c:if>
                 </div>
-                <button type="submit" class="btn btn-primary" style="float: right">Delete</button>
+                <button type="submit" class="btn btn-primary" id="liveToastBtn" style="float: right">Delete</button>
             </div>
         </div>
     </form>

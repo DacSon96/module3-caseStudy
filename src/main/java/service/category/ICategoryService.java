@@ -3,6 +3,8 @@ package service.category;
 import model.Category;
 import service.IGeneralService;
 
-public interface ICategoryService extends IGeneralService<Category> {
+import java.util.List;
 
+public interface ICategoryService extends IGeneralService<Category> {
+    List<Category> searchCategoryByName(String name);
 }

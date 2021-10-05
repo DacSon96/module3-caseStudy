@@ -23,24 +23,16 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Shirt</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Hoodie</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-product">Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="/admin-category">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-order">Orders</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -56,10 +48,10 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/admin" style="text-decoration: none">Admin</a>
+                            <a href="/admin-product" style="text-decoration: none">Product</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#" style="text-decoration: none">Create New Product</a>
+                            <a href="#" style="text-decoration: none">Create New</a>
                         </li>
                     </ol>
                 </nav>
@@ -91,7 +83,6 @@
                             </c:forEach>
                         </select>
                     </div>
-
                 </form>
             </div>
             <div class="card-footer">
@@ -100,15 +91,41 @@
                         <p>${message}</p>
                     </c:if>
                 </div>
-                <button type="submit" class="btn btn-primary" style="float: right">Create New</button>
+                <button type="submit" class="btn btn-primary" id="liveToastBtn" style="float: right">Create New</button>
             </div>
         </div>
     </form>
 </div>
 <br>
 
+<%--&lt;%&ndash;Toast&ndash;%&gt;--%>
+<%--<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">--%>
+<%--    <div id="liveToast" class="toast align-items-center" role="alert"--%>
+<%--         aria-live="assertive" aria-atomic="true" data-bs-autohide="false">--%>
+<%--        <div class="toast-header text-white bg-primary border-0">--%>
+<%--            <strong class="me-auto">Success</strong>--%>
+<%--            <small>just now</small>--%>
+<%--            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>--%>
+<%--        </div>--%>
+<%--        <div class="toast-body">--%>
+<%--            Creating new product done--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
+<script>
+    var toastTrigger = document.getElementById('liveToastBtn')
+    var toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+        toastTrigger.addEventListener('click', function () {
+            var toast = new bootstrap.Toast(toastLiveExample)
+            toast.show()
+        })
+    }
+</script>
 </body>
 </html>

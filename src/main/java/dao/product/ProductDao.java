@@ -130,9 +130,4 @@ public class ProductDao implements IProductDao {
         }
         return products;
     }
-
-    @Override
-    public List<Product> searchProductByCategoryId(int categoryId) {
-        return null;
-    }
 }

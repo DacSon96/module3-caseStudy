@@ -23,24 +23,16 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Shirt</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Hoodie</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-product">Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="/admin-category">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin-order">Orders</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>

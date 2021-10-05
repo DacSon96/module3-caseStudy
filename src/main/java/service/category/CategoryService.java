@@ -33,4 +33,10 @@ public class CategoryService implements ICategoryService {
     public Category findById(int id) {
         return categoryDao.findById(id);
     }
+
+    @Override
+    public List<Category> searchCategoryByName(String name) {
+        name = "%" + name + "%";
+        return categoryDao.searchCategoryByName(name);
+    }
 }

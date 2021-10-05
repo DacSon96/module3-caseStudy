@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import model.Category;
 import model.Product;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminServlet", value = "/admin")
-public class AdminServlet extends HttpServlet {
+@WebServlet(name = "AdminProductServlet", value = "/admin-product")
+public class AdminProductServlet extends HttpServlet {
     private IProductService productService = new ProductService();
     private ICategoryService categoryService = new CategoryService();
 
@@ -41,7 +41,7 @@ public class AdminServlet extends HttpServlet {
                 break;
             }
             default: {
-                showProducts(request, response);
+                showProductView(request, response);
             }
         }
     }
@@ -95,7 +95,7 @@ public class AdminServlet extends HttpServlet {
         }
     }
 
-    private void showProducts(HttpServletRequest request, HttpServletResponse response) {
+    private void showProductView(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         List<Product> products;
         if (name == null || name.equals("")) {
@@ -104,7 +104,7 @@ public class AdminServlet extends HttpServlet {
             products = productService.searchProductByName(name);
         }
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/products.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/product-view.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
