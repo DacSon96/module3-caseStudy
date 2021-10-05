@@ -1,4 +1,4 @@
-/* 
+/*
 
 Tooplate 2114 Pixie
 
@@ -117,7 +117,7 @@ a {
 }
 .navbar-dark .navbar-toggler {
 	border-color: #3a8bcd;
-	background-color: #3a8bcd;	
+	background-color: #3a8bcd;
 	height: 50px;
 	outline: none;
 }
@@ -131,7 +131,7 @@ a {
 /* Banner Style */
 .banner {
 	margin-top: 50px;
-	background-image: url(../images/banner-bg.jpg);
+	background-image: url(../images/Banner.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 150px 0px;
@@ -715,7 +715,7 @@ a {
 	}
 	.featured-page #filters {
 		text-align: right;
-	} 
+	}
 	.single-product .right-content {
 		margin-top: 30px;
 	}
@@ -747,6 +747,6 @@ a {
 	.featured-page #filters {
 		margin-top: 15px;
 		text-align: left;
-	} 
+	}
 
 }

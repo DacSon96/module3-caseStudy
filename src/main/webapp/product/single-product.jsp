@@ -314,7 +314,7 @@
                 <div class="copyright-text">
                     <p>Copyright &copy; 2019 Company Name
 
-                        - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                        - Design: By Group one C0621H1</p>
                 </div>
             </div>
         </div>

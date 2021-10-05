@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,18 +12,15 @@
 
     <title>Pixie - Products</title>
 
+
     <!-- Bootstrap core CSS -->
-    <link href="product/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="product/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="product/assets/css/tooplate-main.css">
-    <link rel="stylesheet" href="product/assets/css/owl.css">
-    <!--
-    Tooplate 2114 Pixie
-    https://www.tooplate.com/view/2114-pixie
-    -->
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
 </head>
 
 <body>
@@ -41,25 +39,26 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="product/assets/images/header-logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#"><img src="../assets/images/header-logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/ProductServlet?action=home">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="products.html">Products
+                    <a class="nav-link" href="/ProductServlet">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -92,87 +91,17 @@
 <div class="featured container no-gutter">
 
     <div class="row posts">
-        <div id="1" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-01.jpg" alt="">
-                    <h4>Proin vel ligula</h4>
-                    <h6>$15.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="2" class="item high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-02.jpg" alt="">
-                    <h4>Erat odio rhoncus</h4>
-                    <h6>$25.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="3" class="item low col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-03.jpg" alt="">
-                    <h4>Integer vel turpis</h4>
-                    <h6>$35.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="4" class="item low col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-04.jpg" alt="">
-                    <h4>Sed purus quam</h4>
-                    <h6>$45.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="5" class="item new high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-05.jpg" alt="">
-                    <h4>Morbi aliquet</h4>
-                    <h6>$55.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="6" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-06.jpg" alt="">
-                    <h4>Urna ac diam</h4>
-                    <h6>$65.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="7" class="item new high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-03.jpg" alt="">
-                    <h4>Proin eget imperdiet</h4>
-                    <h6>$75.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="8" class="item low new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-02.jpg" alt="">
-                    <h4>Nullam risus nisl</h4>
-                    <h6>$85.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="9" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-01.jpg" alt="">
-                    <h4>Cras tempus</h4>
-                    <h6>$95.00</h6>
-                </div>
-            </a>
-        </div>
+        <c:forEach items="${products}" var="product">
+            <div id="${product.id}" class="item new col-md-4">
+                <a href="single-product.html">
+                    <div class="featured-item">
+                        <img src="${product.image}" alt="">
+                        <h4>${product.name}</h4>
+                        <h6>$${product.price}</h6>
+                    </div>
+                </a>
+            </div>
+        </c:forEach>
     </div>
 </div>
 
@@ -205,7 +134,8 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
-                    <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird on it celiac readymade vice.</p>
+                    <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird
+                        on it celiac readymade vice.</p>
                     <div class="container">
                         <form id="subscribe" action="" method="get">
                             <div class="row">
@@ -233,15 +163,13 @@
 <!-- Subscribe Form Ends Here -->
 
 
-
 <!-- Footer Starts Here -->
 <div class="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="logo">
-                    <img src="assets/images/header-logo.png" alt="">
-                </div>
+                    <img src="../assets/images/header-logo.png" height="26" width="122"/></div>
             </div>
             <div class="col-md-12">
                 <div class="footer-menu">
@@ -278,7 +206,7 @@
                 <div class="copyright-text">
                     <p>Copyright &copy; 2019 Company Name
 
-                        - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                        - Design: By Group one C0621H1</p>
                 </div>
             </div>
         </div>
@@ -288,23 +216,22 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="product/vendor/jquery/jquery.min.js"></script>
-<script src="product/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Additional Scripts -->
-<script src="product/assets/js/custom.js"></script>
-<script src="product/assets/js/owl.js"></script>
-<script src="product/assets/js/isotope.js"></script>
+<script src="../assets/js/owl.js"></script>
+<script src="../assets/js/isotope.js"></script>
+<script src="../assets/js/custom.js"></script>
 
 
-<script language = "text/Javascript">
+<script language="text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-    function clearField(t){                   //declaring the array outside of the
-        if(! cleared[t.id]){                      // function makes it static and global
+    function clearField(t) {                   //declaring the array outside of the
+        if (!cleared[t.id]) {                      // function makes it static and global
             cleared[t.id] = 1;  // you could use true and false, but that's more typing
-            t.value='';         // with more chance of typos
-            t.style.color='#fff';
+            t.value = '';         // with more chance of typos
+            t.style.color = '#fff';
         }
     }
 </script>

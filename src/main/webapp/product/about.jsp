@@ -12,14 +12,14 @@
     <title>Pixie Template - About Page</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="product/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="product/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="product/assets/css/tooplate-main.css">
-    <link rel="stylesheet" href="product/assets/css/owl.css">
-    <link rel="stylesheet" href="product/assets/css/flex-slider.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
+    <link rel="stylesheet" href="../assets/css/flex-slider.css">
     <!--
     Tooplate 2114 Pixie
     https://www.tooplate.com/view/2114-pixie
@@ -42,26 +42,26 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="product/assets/images/header-logo.png" alt=""></a>
+        <a class="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/ProductServlet?action=home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="products.html">Products
+                    <a class="nav-link" href="/ProductServlet">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="about.html">About Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
                     <span class="sr-only">(current)</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -189,7 +189,7 @@
                 <div class="copyright-text">
                     <p>Copyright &copy; 2019 Company Name
 
-                        - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                        - Design: By Group one C0621H1</p>
                 </div>
             </div>
         </div>
@@ -199,15 +199,15 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="product/vendor/jquery/jquery.min.js"></script>
-<script src="product/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- Additional Scripts -->
-<script src="product/assets/js/custom.js"></script>
-<script src="product/assets/js/owl.js"></script>
-<script src="product/assets/js/isotope.js"></script>
-<script src="product/assets/js/flex-slider.js"></script>
+<script src="../assets/js/custom.js"></script>
+<script src="../assets/js/owl.js"></script>
+<script src="../assets/js/isotope.js"></script>
+<script src="../assets/js/flex-slider.js"></script>
 
 
 <script language = "text/Javascript">
