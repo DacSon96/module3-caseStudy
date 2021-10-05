@@ -1,21 +1,22 @@
 package service.product;
 
 import dao.product.ProductDao;
+import dao.product.IProductDao;
 import model.Product;
 
 import java.util.List;
 
 public class ProductService implements IProductService {
-    ProductDao productDao = new ProductDao();
+    private IProductDao productDao = new ProductDao();
 
     @Override
-    public List<Product> getAll() {
-        return productDao.getAll();
+    public List<Product> show() {
+        return productDao.show();
     }
 
     @Override
-    public boolean save(Product product) {
-        return false;
+    public boolean create(Product product) {
+        return productDao.create(product);
     }
 
     @Override
@@ -29,7 +30,18 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public boolean findById(int id) {
-        return false;
+    public Product findById(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Product> searchProductByName(String name) {
+        name = "%" + name + "%";
+        return productDao.searchProductByName(name);
+    }
+
+    @Override
+    public List<Product> searchProductByCategory(int categoryId) {
+        return null;
     }
 }

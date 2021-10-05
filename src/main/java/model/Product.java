@@ -6,20 +6,20 @@ public class Product {
     private String size;
     private String image;
     private double price;
-    private Category categoryId;
+    private int categoryId;
 
     public Product() {
     }
 
-    public Product(int id, String name, String size, String image, double price) {
-        this.id = id;
+    public Product(String name, String size, String image, double price, int categoryId) {
         this.name = name;
         this.size = size;
         this.image = image;
         this.price = price;
+        this.categoryId = categoryId;
     }
 
-    public Product(int id, String name, String size, String image, double price, Category categoryId) {
+    public Product(int id, String name, String size, String image, double price, int categoryId) {
         this.id = id;
         this.name = name;
         this.size = size;
@@ -68,11 +68,11 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Category categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 }
