@@ -1,6 +1,6 @@
 package dao.product;
 
-import dao.DBConnection;
+import model.ConnectionDB;
 import model.Product;
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class ProductDao implements IProductDao {
     public static final String SELECT_ALL_PRODUCTS = "SELECT * FROM product";
     public static final String INSERT_NEW_PRODUCT = "INSERT INTO product (name, size, image, price, categoryId) VALUES (?,?,?,?,?)";
     public static final String SELECT_PRODUCT_BY_NAME = "SELECT * FROM product WHERE name like ?";
-    Connection connection = DBConnection.getConnection();
+    Connection connection = ConnectionDB.connection();
 
     @Override
     public List<Product> show() {
