@@ -1,4 +1,7 @@
 package dao.product;
 
-public interface IProductDao {
+import dao.IGeneralDao;
+import model.Product;
+
+public interface IProductDao extends IGeneralDao<Product> {
 }
