@@ -28,10 +28,16 @@ public class ProductServlet extends HttpServlet {
                 showAbout(request, response);
             case "contact":
                 showContact(request, response);
+            case "sortHighToLow":
+                sortHighToLowPrice(request,response);
             default:
                 showProductList(request, response);
                 break;
         }
+    }
+
+    private void sortHighToLowPrice(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     private void showContact(HttpServletRequest request, HttpServletResponse response) {

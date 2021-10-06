@@ -85,6 +85,15 @@
                 </div>
             </div>
         </div>
+        <form action="/product" method="get">
+            <div class="col-3" style="float: right">
+                <div class="input-group">
+                    <input type="search" name="name" class="form-control rounded" placeholder="Search" aria-label="Search"
+                           aria-describedby="search-addon"/>
+                    <button class="btn btn-outline-primary">search</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
