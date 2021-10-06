@@ -30,14 +30,34 @@ public class ProductServlet extends HttpServlet {
                 showContact(request, response);
             case "sortHighToLow":
                 sortHighToLowPrice(request,response);
+            case "sortLowToHigh":
+                sortLowToHighPrice(request,response);
             default:
                 showProductList(request, response);
                 break;
         }
     }
 
-    private void sortHighToLowPrice(HttpServletRequest request, HttpServletResponse response) {
+    private void sortLowToHighPrice(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> products = productService.sortProductLowToHight();
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void sortHighToLowPrice(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> products = productService.sortProductHightToLow();
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showContact(HttpServletRequest request, HttpServletResponse response) {

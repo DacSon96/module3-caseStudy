@@ -9,4 +9,8 @@ public interface IProductService extends IGeneralService<Product> {
     List<Product> searchProductByName(String name);
 
     List<Product> searchProductByCategory(int categoryId);
+
+    List<Product> sortProductLowToHight();
+
+    List<Product> sortProductHightToLow();
 }

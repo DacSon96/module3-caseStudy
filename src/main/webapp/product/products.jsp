@@ -78,10 +78,10 @@
             </div>
             <div class="col-md-8 col-sm-12">
                 <div id="filters" class="button-group">
-                    <button class="btn btn-primary" data-filter="*">All Products</button>
+                    <button class="btn btn-primary" data-filter="*" >All Products</button>
                     <button class="btn btn-primary" data-filter=".new">Newest</button>
-                    <button class="btn btn-primary" data-filter=".low">Low Price</button>
-                    <button class="btn btn-primary" data-filter=".high">Hight Price</button>
+                    <button class="btn btn-primary" ><a  data-filter="*" href="/product?action=sortLowToHigh">Low Price</a></button>
+                    <button class="btn btn-primary" ><a data-filter="*" href="/product?action=sortHighToLow">High Price</a></button>
                 </div>
             </div>
         </div>
