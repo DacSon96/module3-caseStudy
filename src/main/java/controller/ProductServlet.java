@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductServlet", value = "/ProductServlet")
+@WebServlet(name = "ProductServlet", value = "/product")
 public class ProductServlet extends HttpServlet {
     IProductService productService = new ProductService();
     List<Product> products = productService.show();
@@ -38,9 +38,7 @@ public class ProductServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/contact.jsp");
         try {
             dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -49,9 +47,7 @@ public class ProductServlet extends HttpServlet {
     RequestDispatcher dispatcher = request.getRequestDispatcher("/product/about.jsp");
         try {
             dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -61,17 +57,22 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("products", products);
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
 
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        String name = request.getParameter("name");
+        List<Product> products;
+        if (name == null || name.equals("")) {
+            products = productService.show();
+        } else {
+            products = productService.searchProductByName(name);
+        }
         request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/products.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

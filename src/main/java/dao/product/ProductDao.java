@@ -21,7 +21,16 @@ public class ProductDao implements IProductDao {
         List<Product> products = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_PRODUCTS);
-            setResultFromDB(products, statement);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String keyName = resultSet.getString("name");
+                String size = resultSet.getString("size");
+                String image = resultSet.getString("image");
+                double price = resultSet.getDouble("price");
+                int categoryId = resultSet.getInt("categoryId");
+                products.add(new Product(id, keyName, size, image, price, categoryId));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,7 +75,16 @@ public class ProductDao implements IProductDao {
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_PRODUCT_BY_NAME);
             statement.setString(1, name);
-            setResultFromDB(products, statement);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String keyName = resultSet.getString("name");
+                String size = resultSet.getString("size");
+                String image = resultSet.getString("image");
+                double price = resultSet.getDouble("price");
+                int categoryId = resultSet.getInt("categoryId");
+                products.add(new Product(id, keyName, size, image, price, categoryId));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

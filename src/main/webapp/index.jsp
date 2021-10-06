@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,18 +51,18 @@ buy one get two pay triple</span>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/ProductServlet?action=home">Home
+                    <a class="nav-link" href="/product?action=home">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet">Products</a>
+                    <a class="nav-link" href="/product">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
+                    <a class="nav-link" href="/product?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
+                    <a class="nav-link" href="/product?action=contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -85,7 +86,7 @@ buy one get two pay triple</span>
 <br>
                         - Made in USA</p>
                     <div class="main-button">
-                        <a href="/ProductServlet">Order Now!</a>
+                        <a href="/product">Order Now!</a>
                     </div>
                 </div>
             </div>
@@ -102,13 +103,15 @@ buy one get two pay triple</span>
                 <div class="section-heading">
                     <div class="line-dec"></div>
                     <h1>Nice Shirt Model</h1>
+                    <form action="/product" method="get">
                     <div class="col-3" style="float: right">
                         <div class="input-group">
-                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                            <input type="search" name="name" class="form-control rounded" placeholder="Search" aria-label="Search"
                                    aria-describedby="search-addon"/>
-                            <button type="button" class="btn btn-outline-primary">search</button>
+                            <button class="btn btn-outline-primary">search</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-12" style="margin-top: 20px">

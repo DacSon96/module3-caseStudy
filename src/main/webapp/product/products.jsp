@@ -47,18 +47,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=home">Home</a>
+                    <a class="nav-link" href="/product?action=home">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/ProductServlet">Products
+                    <a class="nav-link" href="/product">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
+                    <a class="nav-link" href="/product?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
+                    <a class="nav-link" href="/product?action=contact">Contact Us</a>
                 </li>
             </ul>
         </div>
