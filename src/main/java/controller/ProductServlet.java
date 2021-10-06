@@ -24,14 +24,19 @@ public class ProductServlet extends HttpServlet {
         switch (action) {
             case "home":
                 showIndex(request, response);
+                break;
             case "about":
                 showAbout(request, response);
+                break;
             case "contact":
                 showContact(request, response);
+                break;
             case "sortHighToLow":
                 sortHighToLowPrice(request,response);
+                break;
             case "sortLowToHigh":
                 sortLowToHighPrice(request,response);
+                break;
             default:
                 showProductList(request, response);
                 break;

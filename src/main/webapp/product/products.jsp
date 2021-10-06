@@ -79,7 +79,16 @@
             <div class="col-md-8 col-sm-12">
                 <div id="filters" class="button-group">
                     <button class="btn btn-primary" data-filter="*" >All Products</button>
-                    <button class="btn btn-primary" data-filter=".new">Newest</button>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu">
+                            <c:forEach items="${catelorys}" var="catelory">
+                                <li></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
                     <button class="btn btn-primary" ><a  data-filter="*" href="/product?action=sortLowToHigh">Low Price</a></button>
                     <button class="btn btn-primary" ><a data-filter="*" href="/product?action=sortHighToLow">High Price</a></button>
                 </div>
@@ -98,7 +107,6 @@
 </div>
 
 <div class="featured container no-gutter">
-
     <div class="row posts">
         <c:forEach items="${products}" var="product">
             <div id="${product.id}" class="item new col-md-4">

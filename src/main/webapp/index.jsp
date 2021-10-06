@@ -13,7 +13,7 @@
     <title>Pixie - Ecommerce HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/js/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
 
 
     <!-- Additional CSS Files -->
@@ -78,12 +78,13 @@ buy one get two pay triple</span>
                 <div class="caption">
                     <h2>The most modern fashion</h2>
                     <div class="line-dec"></div>
-                    <p>- High quality made, Fully customizable Shirts, Gift for Family, Friends, Neighbors, Colleagues...
-<br>
-<br>
+                    <p>- High quality made, Fully customizable Shirts, Gift for Family, Friends, Neighbors,
+                        Colleagues...
+                        <br>
+                        <br>
                         - FREE Shipping anywhere in the United States.
-<br>
-<br>
+                        <br>
+                        <br>
                         - Made in USA</p>
                     <div class="main-button">
                         <a href="/product">Order Now!</a>
@@ -104,24 +105,25 @@ buy one get two pay triple</span>
                     <div class="line-dec"></div>
                     <h1>Nice Shirt Model</h1>
                     <form action="/product" method="get">
-                    <div class="col-3" style="float: right">
-                        <div class="input-group">
-                            <input type="search" name="name" class="form-control rounded" placeholder="Search" aria-label="Search"
-                                   aria-describedby="search-addon"/>
-                            <button class="btn btn-outline-primary">search</button>
+                        <div class="col-3" style="float: right">
+                            <div class="input-group">
+                                <input type="search" name="name" class="form-control rounded" placeholder="Search"
+                                       aria-label="Search"
+                                       aria-describedby="search-addon"/>
+                                <button class="btn btn-outline-primary">search</button>
+                            </div>
                         </div>
-                    </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-12" style="margin-top: 20px">
                 <div class="owl-carousel owl-theme">
-                    <a href="single-product.html">
-                        <div class="featured-item">
-                            <img src="assets/images/item-001.jpg" alt="Item 1">
-                            <h4>Indian Army T-Shirt</h4>
-                        </div>
-                    </a>
+                        <a href="single-product.html">
+                            <div class="featured-item">
+                                <img src="assets/images/item-001.jpg" alt="Item 1">
+                                <h4>Indian Army T-Shirt</h4>
+                            </div>
+                        </a>
                     <a href="single-product.html">
                         <div class="featured-item">
                             <img src="assets/images/item-002.jpg" alt="Item 2">

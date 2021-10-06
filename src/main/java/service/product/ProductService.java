@@ -42,7 +42,7 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> searchProductByCategory(int categoryId) {
-        return null;
+        return productDao.searchProductByCategory(categoryId);
     }
 
     @Override
