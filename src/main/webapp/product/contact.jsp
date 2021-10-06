@@ -42,7 +42,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""></a>
+        <a class="navbar-brand" href="/ProductServlet?action=home"><img src="assets/images/header-logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -148,7 +148,7 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
-                    <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird on it celiac readymade vice.</p>
+                    <p>Need Help Payment And Delivery - Refunds. News and Offers: Enter Email AddressSign Up.</p>
                     <div class="container">
                         <form id="subscribe" action="" method="get">
                             <div class="row">
@@ -182,7 +182,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="logo">
+                <div class="logo" href="/ProductServlet?action=home">
                     <img src="assets/images/header-logo.png" alt="">
                 </div>
             </div>
@@ -200,10 +200,10 @@
             <div class="col-md-12">
                 <div class="social-icons">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="http://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://mobile.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://fontawesome.com/"><i class="fa fa-rss"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright-text">
-                    <p>Copyright &copy; 2019 Company Name
+                    <p>Copyright &copy; 2021 Company Name
 
                         - Design: By Group one C0621H1</p>
                 </div>

@@ -42,7 +42,7 @@ buy one get two pay triple</span>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""></a>
+        <a class="navbar-brand" href="/ProductServlet?action=home"><img src="assets/images/header-logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -108,7 +108,7 @@ buy one get two pay triple</span>
                 <div class="owl-carousel owl-theme">
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="assets/images/item-001.jpg" alt="Item 1">
+                            <img src="assets/images/item-1.jpg" alt="Item 1">
                             <h4>Indian Army T-Shirt</h4>
                         </div>
                     </a>
@@ -126,7 +126,7 @@ buy one get two pay triple</span>
                     </a>
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="assets/images/item-004.jpg" alt="Item 4">
+                            <img src="assets/images/item-4.jpg" alt="Item 4">
                             <h4>Retro I Roll Hoodie</h4>
                         </div>
                     </a>
@@ -144,13 +144,13 @@ buy one get two pay triple</span>
                     </a>
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="assets/images/item-007.jpg" alt="Item 7">
+                            <img src="assets/images/item-7.jpg" alt="Item 7">
                             <h4>Road Closed Hoodie</h4>
                         </div>
                     </a>
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="assets/images/item-008.jpg" alt="Item 8">
+                            <img src="assets/images/item-8.jpg" alt="Item 8">
                             <h4>Retro Fish Questions Hoodie</h4>
                         </div>
                     </a>
@@ -180,7 +180,7 @@ buy one get two pay triple</span>
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
-                    <p>Need Help? Payment & Delivery · Refunds. News and Offers:Enter Email AddressSign Up.</p>
+                    <p>Need Help Payment And Delivery - Refunds. News and Offers: Enter Email AddressSign Up.</p>
                     <div class="container">
                         <form id="subscribe" action="" method="get">
                             <div class="row">
@@ -213,7 +213,7 @@ buy one get two pay triple</span>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="logo">
+                <div class="logo" href="/ProductServlet?action=home">
                     <img src="assets/images/header-logo.png" alt="">
                 </div>
             </div>
@@ -250,7 +250,7 @@ buy one get two pay triple</span>
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright-text">
-                    <p>Copyright &copy; 2019 Company Name
+                    <p>Copyright &copy; 2021 Company Name
 
                         - Design: By Group one C0621H1</p>
                 </div>

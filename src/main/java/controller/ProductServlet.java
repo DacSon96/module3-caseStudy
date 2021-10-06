@@ -28,9 +28,22 @@ public class ProductServlet extends HttpServlet {
                 showAbout(request, response);
             case "contact":
                 showContact(request, response);
+            case "product":
+                showAboutProduct(request,response);
             default:
                 showProductList(request, response);
                 break;
+        }
+    }
+
+    private void showAboutProduct(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/single-product.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
