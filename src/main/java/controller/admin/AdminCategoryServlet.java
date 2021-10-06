@@ -14,11 +14,6 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "AdminCategoryServlet", value = "/admin-category")
-//@WebServlet(name = "AdminProductServlet", value = "/admin")
-
-
-
-
 
 public class AdminCategoryServlet extends HttpServlet {
     ICategoryService categoryService = new CategoryService();
@@ -39,7 +34,7 @@ public class AdminCategoryServlet extends HttpServlet {
                 break;
             }
             case "category-delete": {
-                showCategoryDeleteForm(request, response);
+                deleteCategory(request, response);
                 break;
             }
             default: {
@@ -48,20 +43,18 @@ public class AdminCategoryServlet extends HttpServlet {
         }
     }
 
-    private void showCategoryDeleteForm(HttpServletRequest request, HttpServletResponse response) {
+    private void deleteCategory(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Category category = categoryService.findById(id);
-        RequestDispatcher dispatcher;
         if (category == null) {
-            dispatcher = request.getRequestDispatcher("error-404.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
-            request.setAttribute("category", category);
-            dispatcher = request.getRequestDispatcher("/admin/category/category-delete.jsp");
-        }
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+            categoryService.delete(id);
+            try {
+                response.sendRedirect("/admin-category");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -73,7 +66,7 @@ public class AdminCategoryServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("category", category);
-            dispatcher = request.getRequestDispatcher("/admin/category/category-update.jsp");
+            dispatcher = request.getRequestDispatcher("/admin/temp/category-update.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -83,7 +76,7 @@ public class AdminCategoryServlet extends HttpServlet {
     }
 
     private void showCategoryCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/category/category-create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/temp/category-create.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -100,18 +93,7 @@ public class AdminCategoryServlet extends HttpServlet {
             categories = categoryService.searchCategoryByName(name);
         }
         request.setAttribute("categories", categories);
-
-
-
-
-
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-product-view.jsp");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product-view.jsp");
-
-
-
-
-
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/category-view.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -134,64 +116,26 @@ public class AdminCategoryServlet extends HttpServlet {
                 updateCategoryInfo(request, response);
                 break;
             }
-            case "category-delete": {
-                deleteOldCategory(request, response);
-                break;
-            }
-        }
-    }
-
-    private void deleteOldCategory(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        boolean isDeleted = categoryService.delete(id);
-        String message = "";
-        if (isDeleted) {
-            message = "Success!";
-        } else {
-            message = "Failed!";
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-delete.jsp");
-        request.setAttribute("message", message);
-        try {
-            dispatcher.forward(request,response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
         }
     }
 
     private void updateCategoryInfo(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
-        boolean isUpdated = categoryService.update(id, new Category(name));
-        String message = "";
-        if (isUpdated) {
-            message = "Success!";
-        } else {
-            message = "Failed!";
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-update.jsp");
-        request.setAttribute("message", message);
+        categoryService.update(id, new Category(name));
         try {
-            dispatcher.forward(request,response);
-        } catch (ServletException | IOException e) {
+            response.sendRedirect("/admin-category");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void createNewCategory(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        boolean isCreated = categoryService.create(new Category(name));
-        String message = "";
-        if (isCreated) {
-            message = "Success!";
-        } else {
-            message = "Failed!";
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-create.jsp");
-        request.setAttribute("message", message);
+        categoryService.create(new Category(name));
         try {
-            dispatcher.forward(request,response);
-        } catch (ServletException | IOException e) {
+            response.sendRedirect("/admin-category");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

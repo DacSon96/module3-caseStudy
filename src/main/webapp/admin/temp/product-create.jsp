@@ -84,7 +84,7 @@
 </nav>
 
 <%--CONTENT--%>
-<div class="container tm-mt-big tm-mb-big">
+<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col" style="margin: auto">
     <form method="post" class="tm-edit-product-form">
         <div class="row">
             <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
@@ -156,6 +156,7 @@
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
             Copyright &copy; <b>2018</b> All rights reserved.
+
             Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
         </p>
     </div>

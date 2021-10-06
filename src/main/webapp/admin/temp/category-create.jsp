@@ -42,13 +42,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin-product">
+                    <a class="nav-link" href="/admin-product">
                         <i class="fas fa-shopping-cart"></i> Product
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-category">
+                    <a class="nav-link active" href="/admin-category">
                         <i class="fas fa-file-alt"></i> Category
                     </a>
                 </li>
@@ -75,74 +75,36 @@
 <nav>
     <ol class="breadcrumb" style="background-color: #4e657a">
         <li class="breadcrumb-item">
-            <a href="/admin-product" style="text-decoration: none; color: #fff">Product</a>
+            <a href="/admin-category" style="text-decoration: none; color: #fff">Category</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-            <a href="#" style="text-decoration: none; color: #fff">Edit product information</a>
+            <a href="#" style="text-decoration: none; color: #fff">Add new category</a>
         </li>
     </ol>
 </nav>
 
 <%--CONTENT--%>
-<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col" style="margin: auto">
+<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col" style="margin: auto">
     <form method="post" class="tm-edit-product-form">
         <div class="row">
             <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
                 <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Product details</h2>
+                            <h2 class="tm-block-title d-inline-block">Category details</h2>
                         </div>
                     </div>
                     <div class="row tm-edit-product-row">
-                        <div class="col-xl-6 col-lg-6 col-md-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="${product.name}" required>
-                            </div>
-                            <div class="row">
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label class="form-label">Price</label>
-                                    <input type="text" name="price" class="form-control" placeholder="${product.price}" required>
-                                </div>
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label class="form-label">Size</label>
-                                    <input type="text" name="size" class="form-control" placeholder="${product.size}" required>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">Category</label>
-                                <select class="custom-select tm-select-accounts" name="categoryId">
-                                    <c:forEach items="${categories}" var="category">
-                                        <option value="${category.id}">${category.name}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea name="description" class="form-control" rows="2" placeholder="${product.description}" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                            <div class="tm-product-img-edit mx-auto">
-                                <img src="${product.image}" alt="Product image" class="img-fluid d-block mx-auto">
-                                <i
-                                        class="fas fa-cloud-upload-alt tm-upload-icon"
-                                        onclick="document.getElementById('fileInput').click();"
-                                ></i>
-                            </div>
-                            <div class="custom-file mt-3 mb-3">
-                                <input id="fileInput" type="file" style="display:none;"/>
-                                <input
-                                        type="button"
-                                        class="btn btn-primary btn-block mx-auto"
-                                        value="CHANGE IMAGE NOW"
-                                        onclick="document.getElementById('fileInput').click();"
-                                />
+                                <input type="text" name="name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
+                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Category
+                                Now
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -152,12 +114,12 @@
 </div>
 
 <%--FOOTER--%>
-<footer class="tm-footer row tm-mt-small">
+<footer class="tm-footer row tm-mt-small" style="position: fixed; left: 0; bottom: 0; right: 0">
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
             Copyright &copy; <b>2018</b> All rights reserved.
-
-            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template
+            Mo</a>
         </p>
     </div>
 </footer>

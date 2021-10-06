@@ -42,13 +42,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin-product">
+                    <a class="nav-link" href="/admin-product">
                         <i class="fas fa-shopping-cart"></i> Product
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-category">
+                    <a class="nav-link active" href="/admin-category">
                         <i class="fas fa-file-alt"></i> Category
                     </a>
                 </li>
@@ -75,7 +75,7 @@
 <nav>
     <ol class="breadcrumb" style="background-color: #4e657a">
         <li class="breadcrumb-item">
-            <a href="/admin-product" style="text-decoration: none; color: #fff">Product</a>
+            <a href="/admin-category" style="text-decoration: none; color: #fff">Category</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
             <a href="#" style="text-decoration: none; color: #fff">List</a>
@@ -84,12 +84,12 @@
 </nav>
 
 <%--CONTENT--%>
-<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col" style="margin: auto">
-    <div class="tm-bg-primary-dark tm-block tm-block-products">
-        <h2 class="tm-block-title">Products</h2>
+<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col" style="margin: auto">
+    <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+        <h2 class="tm-block-title">Categories</h2>
 
         <%--SEARCH--%>
-        <form action="/admin-product">
+        <form action="/admin-category">
             <div class="d-flex" style="margin-bottom: 11px">
                 <input class="form-control me-3" type="search" placeholder="Search by Name" name="name"
                        aria-label="Search">
@@ -106,27 +106,20 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">NAME</th>
-                    <th scope="col">PRICE</th>
-                    <th scope="col">SIZE</th>
-                    <th scope="col">CATEGORY</th>
                     <th scope="col">&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${products}" var="product">
+                <c:forEach items="${categories}" var="category">
                     <tr>
-                        <th>${product.id}</th>
+                        <td>${category.id}</td>
                         <td>
-                            <a href="/admin-product?action=product-update&id=${product.id}" style="color: #fff">
-                                    ${product.name}
+                            <a href="/admin-category?action=category-update&id=${category.id}" style="color: #fff">
+                                    ${category.name}
                             </a>
                         </td>
-                        <td>${product.price}</td>
-                        <td>${product.size}</td>
-                        <td>${product.category.name}</td>
-                        <td>
-                            <a href="/admin-product?action=product-delete&id=${product.id}"
-                               class="tm-product-delete-link">
+                        <td class="text-center">
+                            <a href="/admin-category?action=category-delete&id=${category.id}">
                                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
                             </a>
                         </td>
@@ -137,8 +130,8 @@
         </div>
 
         <%--ADD NEW BUTTON--%>
-        <a href="/admin-product?action=product-create"
-           class="btn btn-primary btn-block text-uppercase mb-3">Add new product
+        <a href="/admin-category?action=category-create"
+           class="btn btn-primary btn-block text-uppercase mb-3">Add new category
         </a>
     </div>
 </div>
@@ -148,7 +141,8 @@
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
             Copyright &copy; <b>2018</b> All rights reserved.
-            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template
+            Mo</a>
         </p>
     </div>
 </footer>
