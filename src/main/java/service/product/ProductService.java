@@ -47,6 +47,16 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> searchProductByCategory(int categoryId) {
-        return null;
+        return productDao.searchProductByCategory(categoryId);
+    }
+
+    @Override
+    public List<Product> sortProductLowToHight() {
+        return productDao.sortProductLowToHigh();
+    }
+
+    @Override
+    public List<Product> sortProductHightToLow() {
+        return productDao.sortProductHighToLow();
     }
 }

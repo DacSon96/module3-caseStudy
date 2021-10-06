@@ -47,10 +47,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=home">Home</a>
+                    <a class="nav-link" href="/product?action=home">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/ProductServlet?page=1">Products
+                    <a class="nav-link" href="/ProductServlet">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -78,13 +78,31 @@
             </div>
             <div class="col-md-8 col-sm-12">
                 <div id="filters" class="button-group">
-                    <button class="btn btn-primary" data-filter="*">All Products</button>
-                    <button class="btn btn-primary" data-filter=".new">Newest</button>
-                    <button class="btn btn-primary" data-filter=".low">Low Price</button>
-                    <button class="btn btn-primary" data-filter=".high">Hight Price</button>
+                    <button class="btn btn-primary" data-filter="*" >All Products</button>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu">
+                            <c:forEach items="${catelorys}" var="catelory">
+                                <li></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" ><a  data-filter="*" href="/product?action=sortLowToHigh">Low Price</a></button>
+                    <button class="btn btn-primary" ><a data-filter="*" href="/product?action=sortHighToLow">High Price</a></button>
                 </div>
             </div>
         </div>
+        <form action="/ProductServlet" method="get">
+            <div class="col-3" style="float: right">
+                <div class="input-group">
+                    <input type="search" name="name" class="form-control rounded" placeholder="Search" aria-label="Search"
+                           aria-describedby="search-addon"/>
+                    <button class="btn btn-outline-primary">search</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

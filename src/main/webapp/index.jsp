@@ -58,10 +58,10 @@ buy one get two pay triple</span>
                     <a class="nav-link" href="/ProductServlet?page=1">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
+                    <a class="nav-link" href="/product?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
+                    <a class="nav-link" href="/product?action=contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -77,15 +77,16 @@ buy one get two pay triple</span>
                 <div class="caption">
                     <h2>The most modern fashion</h2>
                     <div class="line-dec"></div>
-                    <p>- High quality made, Fully customizable Shirts, Gift for Family, Friends, Neighbors, Colleagues...
-<br>
-<br>
+                    <p>- High quality made, Fully customizable Shirts, Gift for Family, Friends, Neighbors,
+                        Colleagues...
+                        <br>
+                        <br>
                         - FREE Shipping anywhere in the United States.
-<br>
-<br>
+                        <br>
+                        <br>
                         - Made in USA</p>
                     <div class="main-button">
-                        <a href="/ProductServlet">Order Now!</a>
+                        <a href="/ProductServlet?page=1">Order Now!</a>
                     </div>
                 </div>
             </div>
@@ -102,9 +103,19 @@ buy one get two pay triple</span>
                 <div class="section-heading">
                     <div class="line-dec"></div>
                     <h1>Nice Shirt Model</h1>
+                    <form action="/ProductServlet?action=home" method="get">
+                        <div class="col-3" style="float: right">
+                            <div class="input-group">
+                                <input type="search" name="name" class="form-control rounded" placeholder="Search"
+                                       aria-label="Search"
+                                       aria-describedby="search-addon"/>
+                                <button class="btn btn-outline-primary">search</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-top: 20px">
                 <div class="owl-carousel owl-theme">
                     <a href="single-product.html">
                         <div class="featured-item">

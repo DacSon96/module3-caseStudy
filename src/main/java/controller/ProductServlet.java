@@ -24,21 +24,53 @@ public class ProductServlet extends HttpServlet {
         switch (action) {
             case "home":
                 showIndex(request, response);
+                break;
             case "about":
                 showAbout(request, response);
+                break;
             case "contact":
                 showContact(request, response);
-            case "product":
-                showAboutProduct(request, response);
+                break;
+            case "sortHighToLow":
+                sortHighToLowPrice(request,response);
+                break;
+            case "sortLowToHigh":
+                sortLowToHighPrice(request,response);
+                break;
             case "show":
                 showProductList(request, response);
+                break;
             case "showAboutProduct":
                 showAboutProduct(request, response);
+                break;
             case "pay":
                 showPayMent(request,response);
+                break;
             default:
                 showByPage(request, response);
                 break;
+        }
+    }
+
+    private void sortLowToHighPrice(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> products = productService.sortProductLowToHight();
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sortHighToLowPrice(HttpServletRequest request, HttpServletResponse response) {
+        List<Product> products = productService.sortProductHightToLow();
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -94,17 +126,22 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("products", products);
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
 
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        String name = request.getParameter("name");
+        List<Product> products;
+        if (name == null || name.equals("")) {
+            products = productService.show();
+        } else {
+            products = productService.searchProductByName(name);
+        }
         request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/products.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

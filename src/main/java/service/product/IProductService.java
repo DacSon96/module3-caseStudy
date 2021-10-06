@@ -11,4 +11,8 @@ public interface IProductService extends IGeneralService<Product> {
     List<Product> searchProductByCategory(int categoryId);
 
     List<Product> showLimit(int start, int end);
+
+    List<Product> sortProductLowToHight();
+
+    List<Product> sortProductHightToLow();
 }
