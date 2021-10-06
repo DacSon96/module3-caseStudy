@@ -50,7 +50,7 @@
                     <a class="nav-link" href="/ProductServlet?action=home">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/ProductServlet">Products
+                    <a class="nav-link" href="/ProductServlet?page=1">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -93,9 +93,9 @@
     <div class="row posts">
         <c:forEach items="${products}" var="product">
             <div id="${product.id}" class="item new col-md-4">
-                <a href="/ProductServlet?action=product">
+                <a href="/ProductServlet?action=showAboutProduct&id=${product.id}">
                     <div class="featured-item">
-                        <img src="${product.image}" alt="">
+                        <img src="${product.image}" alt="" width="250px" height="250px">
                         <h4>${product.name}</h4>
                         <h6>$${product.price}</h6>
                     </div>
@@ -110,10 +110,13 @@
         <div class="row">
             <div class="col-md-12">
                 <ul>
-                    <li class="current-page"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    <c:forEach begin="1" end="5" step="1" var="i">
+                        <li class="current-page"><a href="/ProductServlet?page=${i}">${i}</a></li>
+                    </c:forEach>
+<%--                    <li class="current-page"><a href="/ProductServlet?page=1">1</a></li>--%>
+<%--                    <li><a href="/ProductServlet?page=2">2</a></li>--%>
+<%--                    <li><a href="/ProductServlet?page=3">3</a></li>--%>
+<%--                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>--%>
                 </ul>
             </div>
         </div>

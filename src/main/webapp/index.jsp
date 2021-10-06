@@ -55,7 +55,7 @@ buy one get two pay triple</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet">Products</a>
+                    <a class="nav-link" href="/ProductServlet?page=1">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/ProductServlet?action=about">About Us</a>

@@ -15,6 +15,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public List<Product> showLimit(int start, int end) {
+        return productDao.showLimit(start,end);
+    }
+
+    @Override
     public boolean create(Product product) {
         return productDao.create(product);
     }

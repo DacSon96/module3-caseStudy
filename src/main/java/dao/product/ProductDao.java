@@ -3,6 +3,7 @@ package dao.product;
 import dao.DBConnection;
 import model.Product;
 
+import javax.servlet.RequestDispatcher;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,8 @@ import java.util.List;
 
 public class ProductDao implements IProductDao {
     public static final String SELECT_ALL_PRODUCTS = "SELECT * FROM product";
-    public static final String INSERT_NEW_PRODUCT = "INSERT INTO product (name, size, image, price, categoryId) VALUES (?,?,?,?,?)";
+    public static final String SELECT_LIMIT_PRODUCTS = "select * from product limit ?,?";
+    public static final String INSERT_NEW_PRODUCT = "INSERT INTO product (name, size, image, price, categoryId) VALUES (?,?,?,?,?,?)";
     public static final String SELECT_PRODUCT_BY_NAME = "SELECT * FROM product WHERE name like ?";
     Connection connection = DBConnection.getConnection();
 
@@ -21,6 +23,20 @@ public class ProductDao implements IProductDao {
         List<Product> products = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_PRODUCTS);
+            setResultFromDB(products, statement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+    @Override
+    public List<Product> showLimit(int start, int end) {
+        List<Product> products = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_LIMIT_PRODUCTS);
+            statement.setInt(1, start);
+            statement.setInt(2, end);
             setResultFromDB(products, statement);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,6 +54,7 @@ public class ProductDao implements IProductDao {
             statement.setString(3, product.getImage());
             statement.setDouble(4, product.getPrice());
             statement.setInt(5, product.getCategoryId());
+            statement.setString(6,product.getDescription());
             isCreated = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,7 +104,10 @@ public class ProductDao implements IProductDao {
             String image = resultSet.getString("image");
             double price = resultSet.getDouble("price");
             int categoryId = resultSet.getInt("categoryId");
-            products.add(new Product(id, keyName, size, image, price, categoryId));
+            String description = resultSet.getString("description");
+            products.add(new Product(id, keyName, size, image, price, categoryId,description));
         }
     }
+
+
 }

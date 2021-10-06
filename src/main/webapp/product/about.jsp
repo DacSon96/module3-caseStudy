@@ -52,7 +52,7 @@
                     <a class="nav-link" href="/ProductServlet?action=home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ProductServlet">Products
+                    <a class="nav-link" href="/ProductServlet?page=1">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>

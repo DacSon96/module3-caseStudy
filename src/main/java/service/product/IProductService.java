@@ -9,4 +9,6 @@ public interface IProductService extends IGeneralService<Product> {
     List<Product> searchProductByName(String name);
 
     List<Product> searchProductByCategory(int categoryId);
+
+    List<Product> showLimit(int start, int end);
 }

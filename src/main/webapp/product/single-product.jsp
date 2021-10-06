@@ -83,44 +83,18 @@
                     <div id="slider" class="flexslider">
                         <ul class="slides">
                             <li>
-                                <img src="assets/images/big-01.jpg" />
+                                <img src="${product.image}" />
                             </li>
-                            <li>
-                                <img src="assets/images/big-02.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/big-03.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/big-04.jpg" />
-                            </li>
-                            <!-- items mirrored twice, total of 12 -->
                         </ul>
                     </div>
-                    <div id="carousel" class="flexslider">
-                        <ul class="slides">
-                            <li>
-                                <img src="assets/images/thumb-01.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/thumb-02.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/thumb-03.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/thumb-04.jpg" />
-                            </li>
-                            <!-- items mirrored twice, total of 12 -->
-                        </ul>
-                    </div>
+
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="right-content">
-                    <h4>Single Product Name</h4>
-                    <h6>$55.00</h6>
-                    <p>Proin commodo, diam a ultricies sagittis, erat odio rhoncus metus, eu feugiat lorem lacus aliquet arcu. Curabitur in gravida nisi, non placerat nibh. Praesent sit amet diam ultrices, commodo turpis id, dignissim leo. Suspendisse mauris massa, porttitor non fermentum vel, ullamcorper scelerisque velit. </p>
+                    <h4>${product.name}</h4>
+                    <h6>${product.price}</h6>
+                    <p>${product.description} </p>
                     <span>7 left on stock</span>
                     <form action="" method="get">
                         <label for="quantity">Quantity:</label>
