@@ -1,11 +1,8 @@
 package controller.admin;
 
 import model.Category;
-import model.Product;
 import service.category.CategoryService;
 import service.category.ICategoryService;
-import service.product.IProductService;
-import service.product.ProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +14,12 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "AdminCategoryServlet", value = "/admin-category")
+//@WebServlet(name = "AdminProductServlet", value = "/admin")
+
+
+
+
+
 public class AdminCategoryServlet extends HttpServlet {
     ICategoryService categoryService = new CategoryService();
 
@@ -97,7 +100,18 @@ public class AdminCategoryServlet extends HttpServlet {
             categories = categoryService.searchCategoryByName(name);
         }
         request.setAttribute("categories", categories);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-view.jsp");
+
+
+
+
+
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/category/category-product-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product-view.jsp");
+
+
+
+
+
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

@@ -37,7 +37,7 @@ public class AdminProductServlet extends HttpServlet {
                 break;
             }
             case "product-delete": {
-                showProductDeleteForm(request, response);
+                deleteProduct(request, response);
                 break;
             }
             default: {
@@ -46,22 +46,18 @@ public class AdminProductServlet extends HttpServlet {
         }
     }
 
-    private void showProductDeleteForm(HttpServletRequest request, HttpServletResponse response) {
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.findById(id);
-        RequestDispatcher dispatcher;
         if (product == null) {
-            dispatcher = request.getRequestDispatcher("error-404.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
-            request.setAttribute("product", product);
-            Category category = categoryService.findById(id);
-            request.setAttribute("category", category);
-            dispatcher = request.getRequestDispatcher("admin/product/product-delete.jsp");
-        }
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+            productService.delete(id);
+            try {
+                response.sendRedirect("/admin-product");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -75,7 +71,7 @@ public class AdminProductServlet extends HttpServlet {
             request.setAttribute("product", product);
             List<Category> categories = categoryService.show();
             request.setAttribute("categories", categories);
-            dispatcher = request.getRequestDispatcher("admin/product/product-update.jsp");
+            dispatcher = request.getRequestDispatcher("admin/temp/product-update.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -85,7 +81,7 @@ public class AdminProductServlet extends HttpServlet {
     }
 
     private void showProductCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/product-create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/product-create.jsp");
         try {
             List<Category> categories = categoryService.show();
             request.setAttribute("categories", categories);
@@ -104,7 +100,7 @@ public class AdminProductServlet extends HttpServlet {
             products = productService.searchProductByName(name);
         }
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/product-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/product-view.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -127,28 +123,6 @@ public class AdminProductServlet extends HttpServlet {
                 updateProductInfo(request, response);
                 break;
             }
-            case "product-delete": {
-                deleteOldProduct(request, response);
-                break;
-            }
-        }
-    }
-
-    private void deleteOldProduct(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        boolean isDeleted = productService.delete(id);
-        String message = "";
-        if (isDeleted) {
-            message = "Success!";
-        } else {
-            message = "Failed!";
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/product-delete.jsp");
-        request.setAttribute("message", message);
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -159,20 +133,13 @@ public class AdminProductServlet extends HttpServlet {
         String image = request.getParameter("image");
         double price = Double.parseDouble(request.getParameter("price"));
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-        boolean isUpdated = productService.update(id, new Product(name, size, image, price, categoryId));
-        String message = "";
-        if (isUpdated) {
-            message = "Success!";
-        } else {
-            message = "Failed!";
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/product-update.jsp");
-        request.setAttribute("message", message);
+        String description = request.getParameter("description");
+        productService.update(id, new Product(name, size, image, price, categoryId, description));
         List<Category> categories = categoryService.show();
         request.setAttribute("categories", categories);
         try {
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
+            response.sendRedirect("/admin-product");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -183,20 +150,13 @@ public class AdminProductServlet extends HttpServlet {
         String image = request.getParameter("image");
         double price = Double.parseDouble(request.getParameter("price"));
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-        boolean isCreated = productService.create(new Product(name, size, image, price, categoryId));
-        String message = "";
-        if (isCreated) {
-            message = "Success!";
-        } else {
-            message = "Failed!";
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/product/product-create.jsp");
-        request.setAttribute("message", message);
+        String description = request.getParameter("description");
+        productService.create(new Product(name, size, image, price, categoryId, description));
         List<Category> categories = categoryService.show();
         request.setAttribute("categories", categories);
         try {
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
+            response.sendRedirect("/admin-product");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

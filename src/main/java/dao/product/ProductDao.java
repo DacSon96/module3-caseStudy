@@ -12,10 +12,10 @@ import java.util.List;
 
 public class ProductDao implements IProductDao {
     public static final String SELECT_ALL_PRODUCTS = "SELECT * FROM product";
-    public static final String INSERT_NEW_PRODUCT = "INSERT INTO product (name, size, image, price, categoryId) VALUES (?,?,?,?,?)";
+    public static final String INSERT_NEW_PRODUCT = "INSERT INTO product (name, size, image, price, categoryId, description) VALUES (?,?,?,?,?,?)";
     public static final String SELECT_PRODUCT_BY_NAME = "SELECT * FROM product WHERE name like ?";
     public static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ?";
-    public static final String UPDATE_PRODUCT_BY_ID = "UPDATE product SET name = ?, size = ?, image = ?, price = ?, categoryId = ? WHERE id = ?";
+    public static final String UPDATE_PRODUCT_BY_ID = "UPDATE product SET name = ?, size = ?, image = ?, price = ?, categoryId = ?, description = ? WHERE id = ?";
     public static final String DELETE_PRODUCT_BY_ID = "DELETE FROM product WHERE id = ?";
     Connection connection = DBConnection.getConnection();
 
@@ -50,6 +50,7 @@ public class ProductDao implements IProductDao {
             statement.setString(3, product.getImage());
             statement.setDouble(4, product.getPrice());
             statement.setInt(5, product.getCategoryId());
+            statement.setString(6, product.getDescription());
             isCreated = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +68,8 @@ public class ProductDao implements IProductDao {
             statement.setString(3, product.getImage());
             statement.setDouble(4, product.getPrice());
             statement.setInt(5, product.getCategoryId());
-            statement.setInt(6, id);
+            statement.setString(6, product.getDescription());
+            statement.setInt(7, id);
             isUpdated = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,7 +103,8 @@ public class ProductDao implements IProductDao {
                 String image = resultSet.getString("image");
                 double price = resultSet.getDouble("price");
                 int categoryId = resultSet.getInt("categoryId");
-                product = new Product(id, keyName, size, image, price, categoryId);
+                String description = resultSet.getString("description");
+                product = new Product(id, keyName, size, image, price, categoryId, description);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,7 +126,8 @@ public class ProductDao implements IProductDao {
                 String image = resultSet.getString("image");
                 double price = resultSet.getDouble("price");
                 int categoryId = resultSet.getInt("categoryId");
-                products.add(new Product(id, keyName, size, image, price, categoryId));
+                String description = resultSet.getString("description");
+                products.add(new Product(id, keyName, size, image, price, categoryId, description));
             }
         } catch (SQLException e) {
             e.printStackTrace();
