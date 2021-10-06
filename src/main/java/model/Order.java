@@ -1,34 +1,34 @@
 package model;
 
-public class OrderDetail {
+public class Order {
     private int id;
     private int customerId;
     private int cartId;
     Customer customer;
     Cart cart;
 
-    public OrderDetail() {
+    public Order() {
     }
 
-    public OrderDetail(int customerId, int cartId) {
+    public Order(int customerId, int cartId) {
         this.customerId = customerId;
         this.cartId = cartId;
     }
 
-    public OrderDetail(int id, int customerId, int cartId) {
+    public Order(int id, int customerId, int cartId) {
         this.id = id;
         this.customerId = customerId;
         this.cartId = cartId;
     }
 
-    public OrderDetail(int customerId, int cartId, Customer customer, Cart cart) {
+    public Order(int customerId, int cartId, Customer customer, Cart cart) {
         this.customerId = customerId;
         this.cartId = cartId;
         this.customer = customer;
         this.cart = cart;
     }
 
-    public OrderDetail(int id, int customerId, int cartId, Customer customer, Cart cart) {
+    public Order(int id, int customerId, int cartId, Customer customer, Cart cart) {
         this.id = id;
         this.customerId = customerId;
         this.cartId = cartId;

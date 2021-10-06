@@ -45,14 +45,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.html">
+                    <a class="nav-link" href="/admin-order">
                         <i class="fas fa-tachometer-alt"></i> Order
-                        <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../accounts.html">
-                        <i class="far fa-user"></i> Accounts
+                    <a class="nav-link" href="/admin-account">
+                        <i class="far fa-user"></i> Account
                     </a>
                 </li>
             </ul>

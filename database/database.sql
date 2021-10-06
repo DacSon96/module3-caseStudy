@@ -95,7 +95,7 @@ UNLOCK TABLES;
 -- Table structure for table `orderdetail`
 --
 
-DROP TABLE IF EXISTS `orderdetail`;
+DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orderdetail` (
@@ -114,9 +114,9 @@ CREATE TABLE `orderdetail` (
 -- Dumping data for table `orderdetail`
 --
 
-LOCK TABLES `orderdetail` WRITE;
-/*!40000 ALTER TABLE `orderdetail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orderdetail` ENABLE KEYS */;
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

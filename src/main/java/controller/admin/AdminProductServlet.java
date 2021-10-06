@@ -18,8 +18,8 @@ import java.util.List;
 
 @WebServlet(name = "AdminProductServlet", value = "/admin-product")
 public class AdminProductServlet extends HttpServlet {
-    private IProductService productService = new ProductService();
-    private ICategoryService categoryService = new CategoryService();
+    IProductService productService = new ProductService();
+    ICategoryService categoryService = new CategoryService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
