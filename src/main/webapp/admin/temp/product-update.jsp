@@ -35,34 +35,30 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.html">
-                        <i class="fas fa-tachometer-alt"></i> Dashboard
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link active" href="/admin-product">
                         <i class="fas fa-shopping-cart"></i> Product
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="/admin-category">
                         <i class="fas fa-file-alt"></i> Category
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                        <i class="fas fa-tachometer-alt"></i> Order
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../accounts.html">
                         <i class="far fa-user"></i> Accounts
                     </a>
                 </li>
-
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link d-block" href="../login.html">
+                    <a class="nav-link d-block" href="/">
                         Admin, <b>Logout</b>
                     </a>
                 </li>
