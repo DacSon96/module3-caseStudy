@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,6 +105,7 @@
                                value="1">
                         <input type="submit" class="button" value="Order Now!">
                     </form>
+                    <a href="/ProductServlet?action=pay">
                     <div class="down-content">
                         <div class="categories">
                             <h6>Category: <span><a href="#">Pants</a>,<a href="#">Women</a>,<a href="#">Lifestyle</a></span></h6>
@@ -134,7 +136,7 @@
                 <div class="owl-carousel owl-theme">
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="assets/images/item-01.jpg" alt="Item 1">
+                            <img src="${product}" alt="${product.id}">
                             <h4>Proin vel ligula</h4>
                             <h6>$15.00</h6>
                         </div>

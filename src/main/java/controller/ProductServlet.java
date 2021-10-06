@@ -34,9 +34,22 @@ public class ProductServlet extends HttpServlet {
                 showProductList(request, response);
             case "showAboutProduct":
                 showAboutProduct(request, response);
+            case "pay":
+                showPayMent(request,response);
             default:
                 showByPage(request, response);
                 break;
+        }
+    }
+
+    private void showPayMent(HttpServletRequest request, HttpServletResponse response) {
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
