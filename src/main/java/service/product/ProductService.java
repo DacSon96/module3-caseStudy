@@ -10,8 +10,8 @@ import model.Product;
 import java.util.List;
 
 public class ProductService implements IProductService {
-    private IProductDao productDao = new ProductDao();
-    private ICategoryDao categoryDao = new CategoryDao();
+    IProductDao productDao = new ProductDao();
+    ICategoryDao categoryDao = new CategoryDao();
 
     @Override
     public List<Product> show() {

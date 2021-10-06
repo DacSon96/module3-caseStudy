@@ -7,7 +7,7 @@ import model.Category;
 import java.util.List;
 
 public class CategoryService implements ICategoryService {
-    private ICategoryDao categoryDao = new CategoryDao();
+    ICategoryDao categoryDao = new CategoryDao();
 
     @Override
     public List<Category> show() {

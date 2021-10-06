@@ -1,13 +1,30 @@
 package service.order;
 
-import model.Order;
+import dao.cart.CartDao;
+import dao.cart.ICartDao;
+import dao.customer.CustomerDao;
+import dao.customer.ICustomerDao;
+import dao.order.IOrderDao;
+import dao.order.OrderDao;
+import model.*;
 
 import java.util.List;
 
 public class OrderService implements IOrderService {
+    IOrderDao orderDao = new OrderDao();
+    ICustomerDao customerDao = new CustomerDao();
+    ICartDao cartDao = new CartDao();
+
     @Override
     public List<Order> show() {
-        return null;
+        List<Order> orders = orderDao.show();
+        for (Order order : orders) {
+            Customer customer = customerDao.findById(order.getCustomerId());
+            order.setCustomer(customer);
+            Cart cart = cartDao.findById(order.getCartId());
+            order.setCart(cart);
+        }
+        return orders;
     }
 
     @Override
