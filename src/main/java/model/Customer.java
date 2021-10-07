@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Customer {
   private int id;
   private String name;
@@ -19,6 +17,22 @@ public class Customer {
   private String username;
   private String password;
   private String  role;
+
+  public Customer() {
+  }
+
+  public Customer(int id, String name, int age, String phone, String address, String email,
+      String username, String password, String role) {
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    this.phone = phone;
+    this.address = address;
+    this.email = email;
+    this.username = username;
+    this.password = password;
+    this.role = role;
+  }
 
   public int getId() {
     return id;

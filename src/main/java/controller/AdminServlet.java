@@ -15,7 +15,7 @@ import service.category.ICategoryService;
 import service.product.IProductService;
 import service.product.ProductService;
 
-@WebServlet(name = "AdminServlet", value = "/admin")
+@WebServlet(name = "AdminServlet", value = "/adminServlet")
 public class AdminServlet extends HttpServlet {
     private IProductService productService = new ProductService();
     private ICategoryService categoryService = new CategoryService();

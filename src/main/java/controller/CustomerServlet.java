@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import model.Customer;
 
-@WebServlet(name = "CustomerServlet", value = "/customer")
+@WebServlet(name = "CustomerServlet", value = "/customerServlet")
 public class CustomerServlet extends HttpServlet {
 
   @Override
@@ -19,10 +19,6 @@ public class CustomerServlet extends HttpServlet {
       action = "";
     }
     switch (action) {
-      case "create":
-        break;
-      case "edit":
-        break;
       case "search":
         break;
       default:
@@ -38,48 +34,37 @@ public class CustomerServlet extends HttpServlet {
       action = "";
     }
     switch (action) {
-      case "create":
-        break;
-      case "edit":
-        break;
       case "search":
         break;
       default:
-        showformLogin(request, response);
+        login(request, response);
     }
   }
 
   private void login(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    String email = request.getParameter("email");
+    String username = request.getParameter("email");
     String password = request.getParameter("password");
     ICustomerService customerService = new CustomerService();
     String destPage = "login.jsp";
-    Customer customer = customerService.findByUserNameAndPassword(email,password);
-    String role = customerService.roleCustomer(email);
-    if(customer !=null && role.equals("customer")){
-      destPage = "/customer";
-    }if(customer !=null && role.equals("admin")){
-      destPage = "/admin";
-      request.setAttribute("customer",customer);
-      RequestDispatcher dispatcher = request.getRequestDispatcher("/Admin.jsp");
-      dispatcher.forward(request,response);
-    }if(customer !=null && role.equals("admin")){
-      destPage = "/admin";
-    }else{
-      String message = "Invalid email/password";
+    Customer customer = customerService.findByUserNameAndPassword(username, password);
+    if (customer != null && customer.getRole().equals("1")){
+      destPage = "/productServlet";
+    }else if (customer != null && customer.getRole().equals("0")){
+      destPage = "/adminServlet";
+    }else {
+      String message =  "Invalid username/password";
       request.setAttribute("message", message);
-
-      RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-      dispatcher.forward(request, response);
-
+      RequestDispatcher requestDispatcher = request.getRequestDispatcher(destPage);
+      requestDispatcher.forward(request, response);
     }
     response.sendRedirect(destPage);
   }
 
+
   private void showformLogin(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.html");
     requestDispatcher.forward(request, response);
   }
 }
