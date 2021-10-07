@@ -18,7 +18,7 @@
 <%--NAV-BAR--%>
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand">
             <h1 class="tm-site-title mb-0">Admin</h1>
         </a>
         <button
@@ -50,8 +50,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-account">
-                        <i class="far fa-user"></i> Account
+                    <a class="nav-link" href="/admin-customer">
+                        <i class="far fa-user"></i> User
                     </a>
                 </li>
             </ul>
@@ -107,7 +107,11 @@
                 <tbody>
                 <c:forEach items="${categories}" var="category">
                     <tr>
-                        <td>${category.id}</td>
+                        <td>
+                            <a href="/admin-category?action=category-update&id=${category.id}" style="color: #fff">
+                                    ${category.id}
+                            </a>
+                        </td>
                         <td>
                             <a href="/admin-category?action=category-update&id=${category.id}" style="color: #fff">
                                     ${category.name}

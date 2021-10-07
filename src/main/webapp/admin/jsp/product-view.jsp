@@ -18,7 +18,7 @@
 <%--NAV-BAR--%>
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand">
             <h1 class="tm-site-title mb-0">Admin</h1>
         </a>
         <button
@@ -50,8 +50,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-account">
-                        <i class="far fa-user"></i> Account
+                    <a class="nav-link" href="/admin-customer">
+                        <i class="far fa-user"></i> User
                     </a>
                 </li>
             </ul>
@@ -110,15 +110,31 @@
                 <tbody>
                 <c:forEach items="${products}" var="product">
                     <tr>
-                        <th>${product.id}</th>
+                        <td>
+                            <a href="/admin-product?action=product-update&id=${product.id}" style="color: #fff">
+                                    ${product.id}
+                            </a>
+                        </td>
                         <td>
                             <a href="/admin-product?action=product-update&id=${product.id}" style="color: #fff">
                                     ${product.name}
                             </a>
                         </td>
-                        <td>${product.price}</td>
-                        <td>${product.size}</td>
-                        <td>${product.category.name}</td>
+                        <td>
+                            <a href="/admin-product?action=product-update&id=${product.id}" style="color: #fff">
+                                    ${product.price}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/admin-product?action=product-update&id=${product.id}" style="color: #fff">
+                                    ${product.size}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/admin-product?action=product-update&id=${product.id}" style="color: #fff">
+                                    ${product.category.name}
+                            </a>
+                        </td>
                         <td>
                             <a href="/admin-product?action=product-delete&id=${product.id}"
                                class="tm-product-delete-link">

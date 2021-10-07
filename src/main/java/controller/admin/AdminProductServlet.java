@@ -71,7 +71,7 @@ public class AdminProductServlet extends HttpServlet {
             request.setAttribute("product", product);
             List<Category> categories = categoryService.show();
             request.setAttribute("categories", categories);
-            dispatcher = request.getRequestDispatcher("admin/temp/product-update.jsp");
+            dispatcher = request.getRequestDispatcher("admin/jsp/product-update.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -81,7 +81,7 @@ public class AdminProductServlet extends HttpServlet {
     }
 
     private void showProductCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/product-create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/jsp/product-create.jsp");
         try {
             List<Category> categories = categoryService.show();
             request.setAttribute("categories", categories);
@@ -100,7 +100,7 @@ public class AdminProductServlet extends HttpServlet {
             products = productService.searchProductByName(name);
         }
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/product-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/jsp/product-view.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

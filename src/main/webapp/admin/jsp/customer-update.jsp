@@ -18,7 +18,7 @@
 <%--NAV-BAR--%>
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand">
             <h1 class="tm-site-title mb-0">Admin</h1>
         </a>
         <button
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin-category">
+                    <a class="nav-link" href="/admin-category">
                         <i class="fas fa-file-alt"></i> Category
                     </a>
                 </li>
@@ -50,8 +50,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-account">
-                        <i class="far fa-user"></i> Account
+                    <a class="nav-link active" href="/admin-customer">
+                        <i class="far fa-user"></i> User
                     </a>
                 </li>
             </ul>
@@ -70,10 +70,10 @@
 <nav>
     <ol class="breadcrumb" style="background-color: #4e657a">
         <li class="breadcrumb-item">
-            <a href="/admin-category" style="text-decoration: none; color: #fff">Category</a>
+            <a href="/admin-customer" style="text-decoration: none; color: #fff">User</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-            <a href="#" style="text-decoration: none; color: #fff">Add new category</a>
+            <a href="#" style="text-decoration: none; color: #fff">Edit user information</a>
         </li>
     </ol>
 </nav>
@@ -86,20 +86,45 @@
                 <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Category details</h2>
+                            <h2 class="tm-block-title d-inline-block">User details</h2>
                         </div>
                     </div>
                     <div class="row tm-edit-product-row">
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" required>
+                                <input type="text" name="name" class="form-control" value="${customer.name}" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" name="phone" class="form-control" value="${customer.phone}" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Address</label>
+                                <input type="text" name="address" class="form-control" value="${customer.address}" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control" value="${customer.username}" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="text" name="password" class="form-control" value="${customer.password}" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Role</label>
+                                <select class="custom-select tm-select-accounts" name="role" id="role">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="text" name="email" class="form-control" value="${customer.email}">
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Category
-                                Now
-                            </button>
+                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
                         </div>
                     </div>
                 </div>
@@ -109,12 +134,12 @@
 </div>
 
 <%--FOOTER--%>
-<footer class="tm-footer row tm-mt-small" style="position: fixed; left: 0; bottom: 0; right: 0">
+<footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
             Copyright &copy; <b>2018</b> All rights reserved.
-            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template
-            Mo</a>
+
+            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
         </p>
     </div>
 </footer>

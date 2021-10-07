@@ -18,7 +18,7 @@
 <%--NAV-BAR--%>
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand">
             <h1 class="tm-site-title mb-0">Admin</h1>
         </a>
         <button
@@ -40,18 +40,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-category">
+                    <a class="nav-link active" href="/admin-category">
                         <i class="fas fa-file-alt"></i> Category
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin-order">
+                    <a class="nav-link" href="/admin-order">
                         <i class="fas fa-tachometer-alt"></i> Order
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin-account">
-                        <i class="far fa-user"></i> Account
+                    <a class="nav-link" href="/admin-customer">
+                        <i class="far fa-user"></i> User
                     </a>
                 </li>
             </ul>
@@ -70,54 +70,48 @@
 <nav>
     <ol class="breadcrumb" style="background-color: #4e657a">
         <li class="breadcrumb-item">
-            <a href="/admin-order" style="text-decoration: none; color: #fff">Order</a>
+            <a href="/admin-category" style="text-decoration: none; color: #fff">Category</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-            <a href="#" style="text-decoration: none; color: #fff">List</a>
+            <a href="#" style="text-decoration: none; color: #fff">Edit category information</a>
         </li>
     </ol>
 </nav>
 
 <%--CONTENT--%>
-<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col" style="margin: auto">
-    <div class="tm-bg-primary-dark tm-block tm-block-products">
-        <h2 class="tm-block-title">Orders</h2>
-        <div class="tm-product-table-container">
-            <table class="table table-hover tm-table-small tm-product-table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">CUSTOMER_NAME</th>
-                    <th scope="col">PHONE</th>
-                    <th scope="col">ADDRESS</th>
-                    <th scope="col">PRODUCT_ID</th>
-                    <th scope="col">QUANTITY</th>
-                    <th scope="col">PRICE</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="orders" var="order">
-                <tr>
-<%--                    <td>${order.id}</td>--%>
-<%--                    <td>${order.customer.name}</td>--%>
-<%--                    <td>${order.customer.phone}</td>--%>
-<%--                    <td>${order.customer.address}</td>--%>
-<%--                    <td>${order.cart.productId}</td>--%>
-<%--                    <td>${order.cart.quantity}</td>--%>
-<%--                    <td>${order.cart.totalPrice}</td>--%>
-                </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col" style="margin: auto">
+    <form method="post" class="tm-edit-product-form">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Category details</h2>
+                        </div>
+                    </div>
+                    <div class="row tm-edit-product-row">
+                        <div class="col-xl-12 col-lg-12 col-md-12">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" name="name" class="form-control" value="${category.name}" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <%--FOOTER--%>
-<footer class="tm-footer row tm-mt-small">
+<footer class="tm-footer row tm-mt-small" style="position: fixed; left: 0; bottom: 0; right: 0">
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
             Copyright &copy; <b>2018</b> All rights reserved.
+
             Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
         </p>
     </div>

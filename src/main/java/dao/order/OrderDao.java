@@ -2,7 +2,6 @@ package dao.order;
 
 import dao.DBConnection;
 import model.Order;
-import model.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

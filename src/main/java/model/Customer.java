@@ -3,7 +3,7 @@ package model;
 public class Customer {
     private int id;
     private String name;
-    private int phone;
+    private String phone;
     private String address;
     private String username;
     private String password;
@@ -13,20 +13,20 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String name, int phone, String address) {
+    public Customer(int id, String name, String phone, String address) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.address = address;
     }
 
-    public Customer(String name, int phone, String address) {
+    public Customer(String name, String phone, String address) {
         this.name = name;
         this.phone = phone;
         this.address = address;
     }
 
-    public Customer(int id, String name, int phone, String address, String username, String password, int role, String email) {
+    public Customer(int id, String name, String phone, String address, String username, String password, int role, String email) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -37,7 +37,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String name, int phone, String address, String username, String password, int role, String email) {
+    public Customer(String name, String phone, String address, String username, String password, int role, String email) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -63,11 +63,11 @@ public class Customer {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

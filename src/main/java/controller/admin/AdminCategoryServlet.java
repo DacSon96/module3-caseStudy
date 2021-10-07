@@ -66,7 +66,7 @@ public class AdminCategoryServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("category", category);
-            dispatcher = request.getRequestDispatcher("/admin/temp/category-update.jsp");
+            dispatcher = request.getRequestDispatcher("/admin/jsp/category-update.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -76,7 +76,7 @@ public class AdminCategoryServlet extends HttpServlet {
     }
 
     private void showCategoryCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/temp/category-create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/jsp/category-create.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -93,7 +93,7 @@ public class AdminCategoryServlet extends HttpServlet {
             categories = categoryService.searchCategoryByName(name);
         }
         request.setAttribute("categories", categories);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/category-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/jsp/category-view.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

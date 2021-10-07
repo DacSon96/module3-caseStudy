@@ -91,7 +91,7 @@ public class AdminOrderServlet extends HttpServlet {
     private void showOrderView(HttpServletRequest request, HttpServletResponse response) {
         List<Order> orders = orderService.show();
         request.setAttribute("orders", orders);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/temp/order-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/jsp/order-view.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
