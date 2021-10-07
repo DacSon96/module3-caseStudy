@@ -18,6 +18,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        int choice;
         if (action == null) {
             action = "";
         }
@@ -43,9 +44,41 @@ public class ProductServlet extends HttpServlet {
             case "pay":
                 showPayMent(request, response);
                 break;
+            case "productByCategory1":
+                choice=1;
+                showProductByCategory(request, response,choice);
+                break;
+            case "productByCategory2":
+                choice=2;
+                showProductByCategory(request, response,choice);
+                break;
             default:
                 showByPage(request, response);
                 break;
+        }
+    }
+
+    private void showProductByCategory(HttpServletRequest request, HttpServletResponse response,int choice) {
+        String name;
+        if (choice==1) {
+            name = "shirt";
+        } else {
+            name = "hoodie";
+        }
+        int pageString = 1;
+        int start;
+        if (pageString == 1) {
+            start = 0;
+        } else {
+            start = (pageString - 1) * 12;
+        }
+        List<Product> products = productService.searchProductByCategory(name, start, 12);
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -165,6 +198,7 @@ public class ProductServlet extends HttpServlet {
         }
 
     }
+
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         List<Product> products;

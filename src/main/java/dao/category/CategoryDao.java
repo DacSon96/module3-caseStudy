@@ -2,6 +2,7 @@ package dao.category;
 
 import dao.DBConnection;
 import model.Category;
+import model.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class CategoryDao implements ICategoryDao {
     public static final String SELECT_ALL_CATEGORIES = "SELECT * FROM category";
+
     Connection connection = DBConnection.getConnection();
 
     @Override
@@ -50,4 +52,5 @@ public class CategoryDao implements ICategoryDao {
     public Category findById(int id) {
         return null;
     }
+
 }

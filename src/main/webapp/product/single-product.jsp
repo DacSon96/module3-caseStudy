@@ -105,7 +105,7 @@
                                value="1">
                         <input type="submit" class="button" value="Order Now!">
                     </form>
-                    <a href="/ProductServlet?action=pay">
+                    <a href="/ProductServlet?action=pay"></a>
                     <div class="down-content">
                         <div class="categories">
                             <h6>Category: <span><a href="#">Pants</a>,<a href="#">Women</a>,<a href="#">Lifestyle</a></span></h6>

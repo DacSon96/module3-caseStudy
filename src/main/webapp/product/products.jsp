@@ -1,3 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="model.Category" %>
+<%@ page import="service.category.CategoryService" %>
+<%@ page import="service.category.ICategoryService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="../assets/css/fontawesome.css">
@@ -24,6 +28,10 @@
 </head>
 
 <body>
+<%
+    ICategoryService categoryService = new CategoryService();
+    List<Category> categories = categoryService.show();
+%>
 
 <!-- Pre Header -->
 <div id="pre-header">
@@ -77,20 +85,20 @@
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
-                <div id="filters" class="button-group">
-                    <button class="btn btn-primary" data-filter="*" >All Products</button>
-                    <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div id="filters" class="button-group" >
+                    <button class="btn btn-primary" style="color: #007bff" >All Products</button>
+                    <div class="btn-group" id="divNewNotifications"s>
+                        <a class="btn btn-primary dropdown-toggle"  data-toggle="dropdown" style="color: #007bff">
                             Category
-                        </button>
+                            <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
-                            <c:forEach items="${catelorys}" var="catelory">
-                                <li></li>
-                            </c:forEach>
+                                <li><a class="dropdown-item" href="/ProductServlet?action=productByCategory1" style="color: #007bff">Shirt</a></li>
+                                <li><a class="dropdown-item" href="/ProductServlet?action=productByCategory2" style="color: #007bff">Hoodie</a></li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary" ><a  data-filter="*" href="/ProductServlet?action=sortLowToHigh">Low Price</a></button>
-                    <button class="btn btn-primary" ><a data-filter="*" href="/ProductServlet?action=sortHighToLow">High Price</a></button>
+                    <button class="btn btn-primary" ><a href="/ProductServlet?action=sortLowToHigh">Low Price</a></button>
+                    <button class="btn btn-primary" ><a href="/ProductServlet?action=sortHighToLow">High Price</a></button>
                 </div>
             </div>
         </div>
@@ -238,7 +246,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <!-- Additional Scripts -->
 <script src="../assets/js/owl.js"></script>
 <script src="../assets/js/isotope.js"></script>

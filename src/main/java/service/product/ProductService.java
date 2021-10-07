@@ -46,8 +46,9 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> searchProductByCategory(int categoryId) {
-        return productDao.searchProductByCategory(categoryId);
+    public List<Product> searchProductByCategory(String name,int start, int end) {
+        name = "%" + name + "%";
+        return productDao.searchProductByCategory(name,start,end);
     }
 
     @Override
