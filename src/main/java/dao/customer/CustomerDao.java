@@ -15,6 +15,7 @@ public class CustomerDao implements ICustomerDao {
     public static final String INSERT_NEW_CUSTOMER = "INSERT INTO customer (name, phone, address, username, password, role, email) VALUES (?,?,?,?,?,?,?)";
     public static final String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET name = ?, phone = ?, address = ?, username = ?, password = ?, role = ?, email = ? WHERE id = ?";
     public static final String DELETE_CUSTOMERBY_ID = "DELETE FROM customer WHERE id = ?";
+    public static final String DELETE_CUSTOMER_BY_ID = "DELETE FROM customer WHERE id = ?";
     public static final String SELECT_CUSTOMER_BY_NAME = "SELECT * FROM customer WHERE name like ?";
     Connection connection = DBConnection.getConnection();
 
@@ -101,7 +102,7 @@ public class CustomerDao implements ICustomerDao {
     public boolean delete(int id) {
         boolean isDeleted = false;
         try {
-            PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMERBY_ID);
+            PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMER_BY_ID);
             statement.setInt(1, id);
             isDeleted = statement.executeUpdate() > 0;
         } catch (SQLException e) {

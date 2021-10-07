@@ -3,11 +3,12 @@ package service.category;
 import dao.category.CategoryDao;
 import dao.category.ICategoryDao;
 import model.Category;
+import model.Product;
 
 import java.util.List;
 
 public class CategoryService implements ICategoryService {
-    private ICategoryDao categoryDao = new CategoryDao();
+    ICategoryDao categoryDao = new CategoryDao();
 
     @Override
     public List<Category> show() {
@@ -16,21 +17,28 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public boolean create(Category category) {
-        return false;
+        return categoryDao.create(category);
     }
 
     @Override
     public boolean update(int id, Category category) {
-        return false;
+        return categoryDao.update(id, category);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return categoryDao.delete(id);
     }
 
     @Override
     public Category findById(int id) {
-        return null;
+        return categoryDao.findById(id);
     }
+
+    @Override
+    public List<Category> searchCategoryByName(String name) {
+        name = "%" + name + "%";
+        return categoryDao.searchCategoryByName(name);
+    }
+
 }

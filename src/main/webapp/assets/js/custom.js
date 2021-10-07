@@ -62,5 +62,8 @@ jQuery( document ).ready(function( $ ) {
 		    slideshow: false,
 		    sync: "#carousel"
 		});
- 
+
+	$('#divNewNotifications li').on('click', function() {
+		$('.dropdown-toggle').html($(this).find('a').html());
+	});
 });

@@ -1,17 +1,26 @@
 package service.product;
 
+import dao.category.CategoryDao;
+import dao.category.ICategoryDao;
 import dao.product.ProductDao;
 import dao.product.IProductDao;
+import model.Category;
 import model.Product;
 
 import java.util.List;
 
 public class ProductService implements IProductService {
-    private IProductDao productDao = new ProductDao();
+    IProductDao productDao = new ProductDao();
+    ICategoryDao categoryDao = new CategoryDao();
 
     @Override
     public List<Product> show() {
-        return productDao.show();
+        List<Product> products = productDao.show();
+        for (Product product : products) {
+            Category category = categoryDao.findById(product.getCategoryId());
+            product.setCategory(category);
+        }
+        return products;
     }
 
     @Override
@@ -26,17 +35,20 @@ public class ProductService implements IProductService {
 
     @Override
     public boolean update(int id, Product product) {
-        return false;
+        return productDao.update(id, product);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return productDao.delete(id);
     }
 
     @Override
     public Product findById(int id) {
-        return null;
+        Product product = productDao.findById(id);
+        Category category = categoryDao.findById(product.getCategoryId());
+        product.setCategory(category);
+        return product;
     }
 
     @Override
@@ -46,17 +58,18 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> searchProductByCategory(int categoryId) {
-        return productDao.searchProductByCategory(categoryId);
+    public List<Product> searchProductByCategory(String name,int start, int end) {
+        name = "%" + name + "%";
+        return productDao.searchProductByCategory(name,start,end);
     }
 
     @Override
-    public List<Product> sortProductLowToHight() {
-        return productDao.sortProductLowToHigh();
+    public List<Product> sortProductLowToHight(int start, int end) {
+        return productDao.sortProductLowToHigh(start,end);
     }
 
     @Override
-    public List<Product> sortProductHightToLow() {
-        return productDao.sortProductHighToLow();
+    public List<Product> sortProductHightToLow(int start, int end) {
+        return productDao.sortProductHighToLow(start,end);
     }
 }

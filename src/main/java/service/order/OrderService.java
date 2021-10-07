@@ -39,11 +39,11 @@ public class OrderService implements IOrderService {
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return orderDao.delete(id);
     }
 
     @Override
     public Order findById(int id) {
-        return null;
+        return orderDao.findById(id);
     }
 }

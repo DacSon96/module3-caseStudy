@@ -29,6 +29,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        int choice;
         if (action == null) {
             action = "";
         }
@@ -48,22 +49,59 @@ public class ProductServlet extends HttpServlet {
             case "sortLowToHigh":
                 sortLowToHighPrice(request, response);
                 break;
-            case "show":
-                showProductList(request, response);
-                break;
             case "showAboutProduct":
                 showAboutProduct(request, response);
                 break;
             case "pay":
                 showPayMent(request, response);
+                break;
+            case "productByCategory1":
+                choice = 1;
+                showProductByCategory(request, response, choice);
+                break;
+            case "productByCategory2":
+                choice = 2;
+                showProductByCategory(request, response, choice);
+                break;
             default:
                 showByPage(request, response);
                 break;
         }
     }
 
+    private void showProductByCategory(HttpServletRequest request, HttpServletResponse response, int choice) {
+        String name;
+        if (choice == 1) {
+            name = "shirt";
+        } else {
+            name = "hoodie";
+        }
+        int pageString = 1;
+        int start;
+        if (pageString == 1) {
+            start = 0;
+        } else {
+            start = (pageString - 1) * 12;
+        }
+        List<Product> products = productService.searchProductByCategory(name, start, 12);
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void sortLowToHighPrice(HttpServletRequest request, HttpServletResponse response) {
-        List<Product> products = productService.sortProductLowToHight();
+        int pageString = 1;
+        int start;
+        if (pageString == 1) {
+            start = 0;
+        } else {
+            start = (pageString - 1) * 12;
+        }
+        List<Product> products = productService.sortProductLowToHight(start, 12);
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
         try {
@@ -74,7 +112,14 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void sortHighToLowPrice(HttpServletRequest request, HttpServletResponse response) {
-        List<Product> products = productService.sortProductHightToLow();
+        int pageString = 1;
+        int start;
+        if (pageString == 1) {
+            start = 0;
+        } else {
+            start = (pageString - 1) * 12;
+        }
+        List<Product> products = productService.sortProductHightToLow(start, 12);
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
         try {
@@ -178,51 +223,72 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        switch (action) {
-            case "showAboutProduct":
-                createCart(request, response);
-            case "pay":
-                customerPay(request, response);
-        }
-    }
-
-    Customer customer;
-
-    private void customerPay(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        customer = new Customer(name, phone, address);
-        customerService.CustomerPay(customer);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        Order order = new Order(customer.getId(), cart.getId());
-        orderService.create(order);
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    Cart cart;
-
-    private void createCart(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        cart = new Cart(id, quantity);
-        cartService.create(cart);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String action = request.getParameter("action");
+//        if (action == null) {
+//            action = "";
+//        }
+//        switch (action) {
+//            case "showAboutProduct":
+//                createCart(request, response);
+//                break;
+//            case "pay":
+//                customerPay(request, response);
+//                break;
+//            default:
+//                showProductList(request, response);
+//                break;
+//        }
+//
+//
+//        private void customerPay (HttpServletRequest request, HttpServletResponse response){
+//            String name = request.getParameter("name");
+//            String phone = request.getParameter("phone");
+//            String address = request.getParameter("address");
+//            Customer customer = new Customer(name, phone, address);
+//            customerService.CustomerPay(customer);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+//            try {
+//                dispatcher.forward(request, response);
+//            } catch (ServletException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//
+//        private void createCart (HttpServletRequest request, HttpServletResponse response){
+//            int id = Integer.parseInt(request.getParameter("id"));
+//            int quantity = Integer.parseInt(request.getParameter("quantity"));
+//            Cart cart = new Cart(id, quantity);
+//            cartService.create(cart);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
+//            try {
+//                dispatcher.forward(request, response);
+//            } catch (ServletException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        private void showProductList(HttpServletRequest request, HttpServletResponse response){
+//            String name = request.getParameter("name");
+//            List<Product> products;
+//            if (name == null || name.equals("")) {
+//                products = productService.show();
+//            } else {
+//                products = productService.searchProductByName(name);
+//            }
+//            request.setAttribute("products", products);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("product/products.jsp");
+//            try {
+//                dispatcher.forward(request, response);
+//            } catch (ServletException | IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

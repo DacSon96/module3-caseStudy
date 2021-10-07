@@ -58,10 +58,13 @@ buy one get two pay triple</span>
                     <a class="nav-link" href="/ProductServlet?page=1">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product?action=about">About Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product?action=contact">Contact Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ProductServlet?action=contact">Login</a>
                 </li>
             </ul>
         </div>
@@ -103,7 +106,7 @@ buy one get two pay triple</span>
                 <div class="section-heading">
                     <div class="line-dec"></div>
                     <h1>Nice Shirt Model</h1>
-                    <form action="/ProductServlet?action=home" method="get">
+                    <form action="/ProductServlet?action=home" method="post">
                         <div class="col-3" style="float: right">
                             <div class="input-group">
                                 <input type="search" name="name" class="form-control rounded" placeholder="Search"
