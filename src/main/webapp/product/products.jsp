@@ -1,3 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="model.Category" %>
+<%@ page import="service.category.CategoryService" %>
+<%@ page import="service.category.ICategoryService" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,21 +16,22 @@
 
     <title>Pixie - Products</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="product/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="product/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="product/assets/css/tooplate-main.css">
-    <link rel="stylesheet" href="product/assets/css/owl.css">
-    <!--
-    Tooplate 2114 Pixie
-    https://www.tooplate.com/view/2114-pixie
-    -->
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
 </head>
 
 <body>
+<%
+    ICategoryService categoryService = new CategoryService();
+    List<Category> categories = categoryService.show();
+%>
 
 <!-- Pre Header -->
 <div id="pre-header">
@@ -41,25 +47,26 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="product/assets/images/header-logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="/ProductServlet?action=home"><img src="../assets/images/header-logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/ProductServlet?action=home">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="products.html">Products
+                    <a class="nav-link" href="/ProductServlet">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -78,101 +85,49 @@
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
-                <div id="filters" class="button-group">
-                    <button class="btn btn-primary" data-filter="*">All Products</button>
-                    <button class="btn btn-primary" data-filter=".new">Newest</button>
-                    <button class="btn btn-primary" data-filter=".low">Low Price</button>
-                    <button class="btn btn-primary" data-filter=".high">Hight Price</button>
+                <div id="filters" class="button-group" >
+                    <button class="btn btn-primary" style="color: #007bff" >All Products</button>
+                    <div class="btn-group" id="divNewNotifications"s>
+                        <a class="btn btn-primary dropdown-toggle"  data-toggle="dropdown" style="color: #007bff">
+                            Category
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/ProductServlet?action=productByCategory1" style="color: #007bff">Shirt</a></li>
+                                <li><a class="dropdown-item" href="/ProductServlet?action=productByCategory2" style="color: #007bff">Hoodie</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" ><a href="/ProductServlet?action=sortLowToHigh">Low Price</a></button>
+                    <button class="btn btn-primary" ><a href="/ProductServlet?action=sortHighToLow">High Price</a></button>
                 </div>
             </div>
         </div>
+        <form action="/ProductServlet" method="post">
+            <div class="col-3" style="float: right">
+                <div class="input-group">
+                    <input type="search" name="name" class="form-control rounded" placeholder="Search" aria-label="Search"
+                           aria-describedby="search-addon"/>
+                    <button class="btn btn-outline-primary">search</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
 <div class="featured container no-gutter">
 
     <div class="row posts">
-        <div id="1" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-01.jpg" alt="">
-                    <h4>Proin vel ligula</h4>
-                    <h6>$15.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="2" class="item high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-02.jpg" alt="">
-                    <h4>Erat odio rhoncus</h4>
-                    <h6>$25.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="3" class="item low col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-03.jpg" alt="">
-                    <h4>Integer vel turpis</h4>
-                    <h6>$35.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="4" class="item low col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-04.jpg" alt="">
-                    <h4>Sed purus quam</h4>
-                    <h6>$45.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="5" class="item new high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-05.jpg" alt="">
-                    <h4>Morbi aliquet</h4>
-                    <h6>$55.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="6" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-06.jpg" alt="">
-                    <h4>Urna ac diam</h4>
-                    <h6>$65.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="7" class="item new high col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-03.jpg" alt="">
-                    <h4>Proin eget imperdiet</h4>
-                    <h6>$75.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="8" class="item low new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-02.jpg" alt="">
-                    <h4>Nullam risus nisl</h4>
-                    <h6>$85.00</h6>
-                </div>
-            </a>
-        </div>
-        <div id="9" class="item new col-md-4">
-            <a href="single-product.html">
-                <div class="featured-item">
-                    <img src="assets/images/product-01.jpg" alt="">
-                    <h4>Cras tempus</h4>
-                    <h6>$95.00</h6>
-                </div>
-            </a>
-        </div>
+        <c:forEach items="${products}" var="product">
+            <div id="${product.id}" class="item new col-md-4">
+                <a href="/ProductServlet?action=showAboutProduct&id=${product.id}">
+                    <div class="featured-item">
+                        <img src="${product.image}" alt="" width="250px" height="250px">
+                        <h4>${product.name}</h4>
+                        <h6>$${product.price}</h6>
+                    </div>
+                </a>
+            </div>
+        </c:forEach>
     </div>
 </div>
 
@@ -181,10 +136,13 @@
         <div class="row">
             <div class="col-md-12">
                 <ul>
-                    <li class="current-page"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    <c:forEach begin="1" end="5" step="1" var="i">
+                        <li class="current-page"><a href="/ProductServlet?page=${i}">${i}</a></li>
+                    </c:forEach>
+<%--                    <li class="current-page"><a href="/ProductServlet?page=1">1</a></li>--%>
+<%--                    <li><a href="/ProductServlet?page=2">2</a></li>--%>
+<%--                    <li><a href="/ProductServlet?page=3">3</a></li>--%>
+<%--                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>--%>
                 </ul>
             </div>
         </div>
@@ -205,7 +163,7 @@
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
-                    <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird on it celiac readymade vice.</p>
+                    <p>Need Help Payment And Delivery - Refunds. News and Offers: Enter Email AddressSign Up.</p>
                     <div class="container">
                         <form id="subscribe" action="" method="get">
                             <div class="row">
@@ -233,15 +191,13 @@
 <!-- Subscribe Form Ends Here -->
 
 
-
 <!-- Footer Starts Here -->
 <div class="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="logo">
-                    <img src="assets/images/header-logo.png" alt="">
-                </div>
+                <div class="logo" href="/ProductServlet?action=home">
+                    <img src="../assets/images/header-logo.png" height="26" width="122"/></div>
             </div>
             <div class="col-md-12">
                 <div class="footer-menu">
@@ -257,10 +213,10 @@
             <div class="col-md-12">
                 <div class="social-icons">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="http://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://mobile.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://fontawesome.com/"><i class="fa fa-rss"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -276,9 +232,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright-text">
-                    <p>Copyright &copy; 2019 Company Name
+                    <p>Copyright &copy; 2021 Company Name
 
-                        - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                        - Design: By Group one C0621H1</p>
                 </div>
             </div>
         </div>
@@ -288,23 +244,22 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="product/vendor/jquery/jquery.min.js"></script>
-<script src="product/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <!-- Additional Scripts -->
-<script src="product/assets/js/custom.js"></script>
-<script src="product/assets/js/owl.js"></script>
-<script src="product/assets/js/isotope.js"></script>
+<script src="../assets/js/owl.js"></script>
+<script src="../assets/js/isotope.js"></script>
+<script src="../assets/js/custom.js"></script>
 
 
-<script language = "text/Javascript">
+<script language="text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-    function clearField(t){                   //declaring the array outside of the
-        if(! cleared[t.id]){                      // function makes it static and global
+    function clearField(t) {                   //declaring the array outside of the
+        if (!cleared[t.id]) {                      // function makes it static and global
             cleared[t.id] = 1;  // you could use true and false, but that's more typing
-            t.value='';         // with more chance of typos
-            t.style.color='#fff';
+            t.value = '';         // with more chance of typos
+            t.style.color = '#fff';
         }
     }
 </script>

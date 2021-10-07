@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,14 +13,14 @@
     <title>Pixie - Product Detail</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="product/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="product/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="product/assets/css/tooplate-main.css">
-    <link rel="stylesheet" href="product//css/owl.css">
-    <link rel="stylesheet" href="product/assets/css/flex-slider.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
+    <link rel="stylesheet" href="../assets/css/flex-slider.css">
     <!--
     Tooplate 2114 Pixie
     https://www.tooplate.com/view/2114-pixie
@@ -42,7 +43,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="product/assets/images/header-logo.png" alt=""></a>
+        <a class="navbar-brand" href="/ProductServlet?action=home"><img src="assets/images/header-logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,44 +84,18 @@
                     <div id="slider" class="flexslider">
                         <ul class="slides">
                             <li>
-                                <img src="assets/images/big-01.jpg" />
+                                <img src="${product.image}" />
                             </li>
-                            <li>
-                                <img src="assets/images/big-02.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/big-03.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/big-04.jpg" />
-                            </li>
-                            <!-- items mirrored twice, total of 12 -->
                         </ul>
                     </div>
-                    <div id="carousel" class="flexslider">
-                        <ul class="slides">
-                            <li>
-                                <img src="assets/images/thumb-01.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/thumb-02.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/thumb-03.jpg" />
-                            </li>
-                            <li>
-                                <img src="assets/images/thumb-04.jpg" />
-                            </li>
-                            <!-- items mirrored twice, total of 12 -->
-                        </ul>
-                    </div>
+
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="right-content">
-                    <h4>Single Product Name</h4>
-                    <h6>$55.00</h6>
-                    <p>Proin commodo, diam a ultricies sagittis, erat odio rhoncus metus, eu feugiat lorem lacus aliquet arcu. Curabitur in gravida nisi, non placerat nibh. Praesent sit amet diam ultrices, commodo turpis id, dignissim leo. Suspendisse mauris massa, porttitor non fermentum vel, ullamcorper scelerisque velit. </p>
+                    <h4>${product.name}</h4>
+                    <h6>${product.price}</h6>
+                    <p>${product.description} </p>
                     <span>7 left on stock</span>
                     <form action="" method="get">
                         <label for="quantity">Quantity:</label>
@@ -130,6 +105,7 @@
                                value="1">
                         <input type="submit" class="button" value="Order Now!">
                     </form>
+                    <a href="/ProductServlet?action=pay"></a>
                     <div class="down-content">
                         <div class="categories">
                             <h6>Category: <span><a href="#">Pants</a>,<a href="#">Women</a>,<a href="#">Lifestyle</a></span></h6>
@@ -160,7 +136,7 @@
                 <div class="owl-carousel owl-theme">
                     <a href="single-product.html">
                         <div class="featured-item">
-                            <img src="assets/images/item-01.jpg" alt="Item 1">
+                            <img src="${product}" alt="${product.id}">
                             <h4>Proin vel ligula</h4>
                             <h6>$15.00</h6>
                         </div>
@@ -275,7 +251,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="logo">
+                <div class="logo" href="/ProductServlet?action=home">
                     <img src="assets/images/header-logo.png" alt="">
                 </div>
             </div>
@@ -324,15 +300,15 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="product/vendor/jquery/jquery.min.js"></script>
-<script src="product/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- Additional Scripts -->
-<script src="product/assets/js/custom.js"></script>
-<script src="product/assets/js/owl.js"></script>
-<script src="product/assets/js/isotope.js"></script>
-<script src="product/assets/js/flex-slider.js"></script>
+<script src="../assets/js/custom.js"></script>
+<script src="../assets/js/owl.js"></script>
+<script src="../assets/js/isotope.js"></script>
+<script src="../assets/js/flex-slider.js"></script>
 
 
 <script language = "text/Javascript">

@@ -3,6 +3,7 @@ package service.category;
 import dao.category.CategoryDao;
 import dao.category.ICategoryDao;
 import model.Category;
+import model.Product;
 
 import java.util.List;
 
@@ -39,4 +40,5 @@ public class CategoryService implements ICategoryService {
         name = "%" + name + "%";
         return categoryDao.searchCategoryByName(name);
     }
+
 }
