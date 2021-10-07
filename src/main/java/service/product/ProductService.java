@@ -51,12 +51,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> sortProductLowToHight() {
-        return productDao.sortProductLowToHigh();
+    public List<Product> sortProductLowToHight(int start, int end) {
+        return productDao.sortProductLowToHigh(start,end);
     }
 
     @Override
-    public List<Product> sortProductHightToLow() {
-        return productDao.sortProductHighToLow();
+    public List<Product> sortProductHightToLow(int start, int end) {
+        return productDao.sortProductHighToLow(start,end);
     }
 }

@@ -12,7 +12,7 @@ public interface IProductService extends IGeneralService<Product> {
 
     List<Product> showLimit(int start, int end);
 
-    List<Product> sortProductLowToHight();
+    List<Product> sortProductLowToHight(int start, int end);
 
-    List<Product> sortProductHightToLow();
+    List<Product> sortProductHightToLow(int start, int end);
 }

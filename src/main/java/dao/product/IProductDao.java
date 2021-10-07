@@ -13,8 +13,8 @@ public interface IProductDao extends IGeneralDao<Product> {
     List<Product> showLimit(int start, int end);
 
 
-    List<Product> sortProductLowToHigh();
+    List<Product> sortProductLowToHigh(int start, int end);
 
-    List<Product> sortProductHighToLow();
+    List<Product> sortProductHighToLow(int start, int end);
 
 }
