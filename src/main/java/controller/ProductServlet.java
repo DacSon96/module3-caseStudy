@@ -1,6 +1,13 @@
 package controller;
 
+import model.Cart;
+import model.Customer;
+import model.Order;
 import model.Product;
+import service.cart.CartService;
+import service.customer.CustomerService;
+import service.order.IOrderService;
+import service.order.OrderService;
 import service.product.IProductService;
 import service.product.ProductService;
 
@@ -8,12 +15,16 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/ProductServlet")
 public class ProductServlet extends HttpServlet {
     IProductService productService = new ProductService();
     List<Product> products = productService.show();
+    CartService cartService = new CartService();
+    CustomerService customerService = new CustomerService();
+    IOrderService orderService = new OrderService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,10 +43,10 @@ public class ProductServlet extends HttpServlet {
                 showContact(request, response);
                 break;
             case "sortHighToLow":
-                sortHighToLowPrice(request,response);
+                sortHighToLowPrice(request, response);
                 break;
             case "sortLowToHigh":
-                sortLowToHighPrice(request,response);
+                sortLowToHighPrice(request, response);
                 break;
             case "show":
                 showProductList(request, response);
@@ -44,8 +55,7 @@ public class ProductServlet extends HttpServlet {
                 showAboutProduct(request, response);
                 break;
             case "pay":
-                showPayMent(request,response);
-                break;
+                showPayMent(request, response);
             default:
                 showByPage(request, response);
                 break;
@@ -57,7 +67,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
@@ -68,16 +78,16 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/products.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
     private void showPayMent(HttpServletRequest request, HttpServletResponse response) {
-    RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
         try {
-            dispatcher.forward(request,response);
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -90,7 +100,8 @@ public class ProductServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/single-product.jsp");
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            request.setAttribute("product", products.get(id-1));
+            request.setAttribute("product", products.get(id - 1));
+            request.setAttribute("productPropose", productService.showLimit(id, 12));
             dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -169,6 +180,49 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        switch (action) {
+            case "showAboutProduct":
+                createCart(request, response);
+            case "pay":
+                customerPay(request, response);
+        }
+    }
 
+    Customer customer;
+
+    private void customerPay(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        customer = new Customer(name, phone, address);
+        customerService.CustomerPay(customer);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        Order order = new Order(customer.getId(), cart.getId());
+        orderService.create(order);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    Cart cart;
+
+    private void createCart(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        cart = new Cart(id, quantity);
+        cartService.create(cart);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
