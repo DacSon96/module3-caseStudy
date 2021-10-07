@@ -93,23 +93,23 @@
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" value="${customer.name}" required>
+                                <input type="text" name="name" class="form-control" placeholder="${customer.name}" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Phone</label>
-                                <input type="text" name="phone" class="form-control" value="${customer.phone}" required>
+                                <input type="text" name="phone" class="form-control" placeholder="${customer.phone}" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Address</label>
-                                <input type="text" name="address" class="form-control" value="${customer.address}" required>
+                                <input type="text" name="address" class="form-control" placeholder="${customer.address}" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" value="${customer.username}" required>
+                                <input type="text" name="username" class="form-control" placeholder="${customer.username}" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="text" name="password" class="form-control" value="${customer.password}" required>
+                                <input type="text" name="password" class="form-control" placeholder="${customer.password}" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Role</label>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control" value="${customer.email}">
+                                <input type="text" name="email" class="form-control" placeholder="${customer.email}" required>
                             </div>
                         </div>
                         <div class="col-12">

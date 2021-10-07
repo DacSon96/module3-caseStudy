@@ -118,7 +118,8 @@
                             </a>
                         </td>
                         <td class="text-center">
-                            <a href="/admin-category?action=category-delete&id=${category.id}">
+                            <a href="/admin-category?action=category-delete&id=${category.id}"
+                               class="tm-product-delete-link">
                                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
                             </a>
                         </td>

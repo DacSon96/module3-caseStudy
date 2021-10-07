@@ -107,7 +107,8 @@
                     <td>${order.cart.quantity}</td>
                     <td>${order.cart.totalPrice}</td>
                     <td class="text-center">
-                        <a href="/admin-order?action=order-delete&id=${order.id}">
+                        <a href="/admin-order?action=order-delete&id=${order.id}"
+                           class="tm-product-delete-link">
                             <i class="far fa-trash-alt tm-product-delete-icon"></i>
                         </a>
                     </td>
