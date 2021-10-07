@@ -1,7 +1,6 @@
 package dao.order;
 
 import dao.DBConnection;
-import model.Category;
 import model.Order;
 
 import java.sql.Connection;

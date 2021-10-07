@@ -2,9 +2,7 @@ package service.customer;
 
 import dao.customer.CustomerDao;
 import dao.customer.ICustomerDao;
-import model.Category;
 import model.Customer;
-import model.Product;
 
 import java.util.List;
 
