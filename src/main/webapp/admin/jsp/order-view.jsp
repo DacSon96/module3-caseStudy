@@ -93,6 +93,7 @@
                     <th scope="col">PRODUCT_ID</th>
                     <th scope="col">QUANTITY</th>
                     <th scope="col">PRICE</th>
+                    <th scope="col"> </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -105,6 +106,11 @@
                     <td>${order.cart.productId}</td>
                     <td>${order.cart.quantity}</td>
                     <td>${order.cart.totalPrice}</td>
+                    <td class="text-center">
+                        <a href="/admin-order?action=order-delete&id=${order.id}">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </a>
+                    </td>
                 </tr>
                 </c:forEach>
                 </tbody>

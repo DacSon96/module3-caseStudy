@@ -1,6 +1,7 @@
 package dao.order;
 
 import dao.DBConnection;
+import model.Category;
 import model.Order;
 
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.util.List;
 
 public class OrderDao implements IOrderDao {
     public static final String SELECT_ALL_ORDERS = "SELECT * FROM `order`";
+    public static final String DELETE_ORDER_BY_ID = "DELETE FROM `order` WHERE id = ?";
+    public static final String SELECT_ORDER_BY_ID = "SELECT * FROM `order` WHERE id = ?";
     Connection connection = DBConnection.getConnection();
 
     @Override
@@ -44,11 +47,33 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public boolean delete(int id) {
-        return false;
+        boolean isDeleted = false;
+        try {
+            PreparedStatement statement = connection.prepareStatement(DELETE_ORDER_BY_ID);
+            statement.setInt(1, id);
+            isDeleted = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isDeleted;
     }
 
     @Override
     public Order findById(int id) {
-        return null;
+        Order order = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT_ORDER_BY_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int keyId = resultSet.getInt("id");
+                int customerId = resultSet.getInt("customerId");
+                int cartId = resultSet.getInt("cartId");
+                order = new Order(keyId, customerId, cartId);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return order;
     }
 }
