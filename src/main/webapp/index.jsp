@@ -63,6 +63,9 @@ buy one get two pay triple</span>
                 <li class="nav-item">
                     <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ProductServlet?action=contact">Login</a>
+                </li>
             </ul>
         </div>
     </div>

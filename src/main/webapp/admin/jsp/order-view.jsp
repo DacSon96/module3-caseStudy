@@ -80,9 +80,22 @@
 
 <%--CONTENT--%>
 <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col" style="margin: auto">
-    <div class="tm-bg-primary-dark tm-block tm-block-products">
+    <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
         <h2 class="tm-block-title">Orders</h2>
-        <div class="tm-product-table-container">
+
+<%--        &lt;%&ndash;SEARCH&ndash;%&gt;--%>
+<%--        <form action="/admin-order">--%>
+<%--            <div class="d-flex" style="margin-bottom: 11px">--%>
+<%--                <input class="form-control me-3" type="search" placeholder="Search by Name" name="id"--%>
+<%--                       aria-label="Search">--%>
+<%--                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-1"--%>
+<%--                        style="padding: 12.5px; border-width: 1.7px">Search--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--        </form>--%>
+
+        <%--LIST--%>
+        <div class="tm-product-table-container" style="margin: 0">
             <table class="table table-hover tm-table-small tm-product-table">
                 <thead>
                 <tr>
@@ -93,26 +106,26 @@
                     <th scope="col">PRODUCT_ID</th>
                     <th scope="col">QUANTITY</th>
                     <th scope="col">PRICE</th>
-                    <th scope="col"> </th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${orders}" var="order">
-                <tr>
-                    <td>${order.id}</td>
-                    <td>${order.customer.name}</td>
-                    <td>${order.customer.phone}</td>
-                    <td>${order.customer.address}</td>
-                    <td>${order.cart.productId}</td>
-                    <td>${order.cart.quantity}</td>
-                    <td>${order.cart.totalPrice}</td>
-                    <td class="text-center">
-                        <a href="/admin-order?action=order-delete&id=${order.id}"
-                           class="tm-product-delete-link">
-                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>${order.customer.name}</td>
+                        <td>${order.customer.phone}</td>
+                        <td>${order.customer.address}</td>
+                        <td>${order.cart.productId}</td>
+                        <td>${order.cart.quantity}</td>
+                        <td>${order.cart.totalPrice}</td>
+                        <td class="text-center">
+                            <a href="/admin-order?action=order-delete&id=${order.id}"
+                               class="tm-product-delete-link">
+                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                            </a>
+                        </td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>

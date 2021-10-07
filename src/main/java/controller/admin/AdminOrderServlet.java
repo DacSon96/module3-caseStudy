@@ -51,6 +51,7 @@ public class AdminOrderServlet extends HttpServlet {
     }
 
     private void showOrderView(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
         List<Order> orders = orderService.show();
         request.setAttribute("orders", orders);
         RequestDispatcher dispatcher = request.getRequestDispatcher("admin/jsp/order-view.jsp");
