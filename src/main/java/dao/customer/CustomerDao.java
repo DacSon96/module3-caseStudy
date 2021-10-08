@@ -14,7 +14,6 @@ public class CustomerDao implements ICustomerDao {
     public static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM customer WHERE id = ?";
     public static final String INSERT_NEW_CUSTOMER = "INSERT INTO customer (name, phone, address, username, password, role, email) VALUES (?,?,?,?,?,?,?)";
     public static final String UPDATE_CUSTOMER_BY_ID = "UPDATE customer SET name = ?, phone = ?, address = ?, username = ?, password = ?, role = ?, email = ? WHERE id = ?";
-    public static final String DELETE_CUSTOMERBY_ID = "DELETE FROM customer WHERE id = ?";
     public static final String DELETE_CUSTOMER_BY_ID = "DELETE FROM customer WHERE id = ?";
     public static final String SELECT_CUSTOMER_BY_NAME = "SELECT * FROM customer WHERE name like ?";
     Connection connection = DBConnection.getConnection();
