@@ -51,8 +51,13 @@ public class AdminOrderServlet extends HttpServlet {
     }
 
     private void showOrderView(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        List<Order> orders = orderService.show();
+        String orderId = request.getParameter("orderId");
+        List<Order> orders;
+        if (orderId == null || orderId.equals("")) {
+            orders = orderService.show();
+        } else {
+            orders = orderService.searchOrderById(orderId);
+        }
         request.setAttribute("orders", orders);
         RequestDispatcher dispatcher = request.getRequestDispatcher("admin/jsp/order-view.jsp");
         try {

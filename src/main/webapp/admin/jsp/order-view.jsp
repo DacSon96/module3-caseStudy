@@ -83,16 +83,16 @@
     <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
         <h2 class="tm-block-title">Orders</h2>
 
-<%--        &lt;%&ndash;SEARCH&ndash;%&gt;--%>
-<%--        <form action="/admin-order">--%>
-<%--            <div class="d-flex" style="margin-bottom: 11px">--%>
-<%--                <input class="form-control me-3" type="search" placeholder="Search by Name" name="id"--%>
-<%--                       aria-label="Search">--%>
-<%--                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-1"--%>
-<%--                        style="padding: 12.5px; border-width: 1.7px">Search--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--        </form>--%>
+        <%--SEARCH--%>
+        <form action="/admin-order">
+            <div class="d-flex" style="margin-bottom: 11px">
+                <input class="form-control me-3" type="search" placeholder="Search by Id" name="orderId"
+                       aria-label="Search">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-1"
+                        style="padding: 12.5px; border-width: 1.7px">Search
+                </button>
+            </div>
+        </form>
 
         <%--LIST--%>
         <div class="tm-product-table-container" style="margin: 0">

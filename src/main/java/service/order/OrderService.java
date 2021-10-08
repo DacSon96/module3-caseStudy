@@ -46,4 +46,16 @@ public class OrderService implements IOrderService {
     public Order findById(int id) {
         return orderDao.findById(id);
     }
+
+    @Override
+    public List<Order> searchOrderById(String orderId) {
+        List<Order> orders = orderDao.searchOrderById(orderId);
+        for (Order order : orders) {
+            Customer customer = customerDao.findById(order.getCustomerId());
+            order.setCustomer(customer);
+            Cart cart = cartDao.findById(order.getCartId());
+            order.setCart(cart);
+        }
+        return orders;
+    }
 }

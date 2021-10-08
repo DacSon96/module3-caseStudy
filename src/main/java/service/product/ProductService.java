@@ -25,7 +25,7 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> showLimit(int start, int end) {
-        return productDao.showLimit(start,end);
+        return productDao.showLimit(start, end);
     }
 
     @Override
@@ -63,18 +63,18 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> searchProductByCategory(String name,int start, int end) {
+    public List<Product> searchProductByCategory(String name, int start, int end) {
         name = "%" + name + "%";
-        return productDao.searchProductByCategory(name,start,end);
+        return productDao.searchProductByCategory(name, start, end);
     }
 
     @Override
     public List<Product> sortProductLowToHight(int start, int end) {
-        return productDao.sortProductLowToHigh(start,end);
+        return productDao.sortProductLowToHigh(start, end);
     }
 
     @Override
     public List<Product> sortProductHightToLow(int start, int end) {
-        return productDao.sortProductHighToLow(start,end);
+        return productDao.sortProductHighToLow(start, end);
     }
 }
