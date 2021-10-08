@@ -120,55 +120,55 @@ buy one get two pay triple</span>
             </div>
             <div class="col-md-12" style="margin-top: 20px">
                 <div class="owl-carousel owl-theme">
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-1.jpg" alt="Item 1">
                             <h4>Indian Army T-Shirt</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-002.jpg" alt="Item 2">
                             <h4>Ghost Funny T-Shirt</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-003.jpg" alt="Item 3">
                             <h4>Life Begin At 50 T-Shirt</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-4.jpg" alt="Item 4">
                             <h4>Retro I Roll Hoodie</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-005.jpg" alt="Item 5">
                             <h4>Beach Vacation T-Shirt</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-006.jpg" alt="Item 6">
                             <h4>Bowling Technique T-Shirt</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-7.jpg" alt="Item 7">
                             <h4>Road Closed Hoodie</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-8.jpg" alt="Item 8">
                             <h4>Retro Fish Questions Hoodie</h4>
                         </div>
                     </a>
-                    <a href="single-product.html">
+                    <a>
                         <div class="featured-item">
                             <img src="assets/images/item-009.jpg" alt="Item 9">
                             <h4>The Guy Zip Hoodie</h4>
@@ -196,7 +196,7 @@ buy one get two pay triple</span>
                 <div class="main-content">
                     <p>Need Help Payment And Delivery - Refunds. News and Offers: Enter Email AddressSign Up.</p>
                     <div class="container">
-                        <form id="subscribe" action="" method="get">
+                        <form id="subscribe" href="/ProductServlet?action=home" method="get">
                             <div class="row">
                                 <div class="col-md-7">
                                     <fieldset>

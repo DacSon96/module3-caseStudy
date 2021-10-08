@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <span>Suspendisse laoreet magna vel diam lobortis imperdiet</span>
+                <span>Website selling super discounted shirts - buy one get two pay triple</span>
             </div>
         </div>
     </div>
@@ -51,18 +51,21 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="/ProductServlet?action=home">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="products.html">Products
+                    <a class="nav-link" href="/ProductServlet?page=1">Products
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="/ProductServlet?action=contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ProductServlet?action=contact">Login</a>
                 </li>
             </ul>
         </div>
