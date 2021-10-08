@@ -105,7 +105,11 @@ public class CustomerDao implements ICustomerDao {
                 String name = resultSet.getString("name");
                 String phone = resultSet.getString("phone");
                 String address = resultSet.getString("address");
-                customer = new Customer(keyId, name, phone, address);
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                int role = resultSet.getInt("role");
+                String email = resultSet.getString("email");
+                customer = new Customer(keyId, name, phone, address, username, password, role, email);
             }
         } catch (SQLException e) {
             e.printStackTrace();

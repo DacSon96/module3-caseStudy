@@ -93,7 +93,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="${category.name}" required>
+                                <input type="text" name="name" class="form-control" value="${category.name}" required>
                             </div>
                         </div>
                         <div class="col-12">

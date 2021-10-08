@@ -54,7 +54,12 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> searchProductByName(String name) {
         name = "%" + name + "%";
-        return productDao.searchProductByName(name);
+        List<Product> products = productDao.searchProductByName(name);
+        for (Product product : products) {
+            Category category = categoryDao.findById(product.getCategoryId());
+            product.setCategory(category);
+        }
+        return products;
     }
 
     @Override
