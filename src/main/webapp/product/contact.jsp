@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <span>Suspendisse laoreet magna vel diam lobortis imperdiet</span>
+                <span>Website selling super discounted shirts - buy one get two pay triple</span>
             </div>
         </div>
     </div>
@@ -62,6 +62,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="ProductServlet?action=contact">Contact Us</a>
                     <span class="sr-only">(current)</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ProductServlet?action=contact">Login</a>
                 </li>
             </ul>
         </div>
