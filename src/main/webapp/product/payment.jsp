@@ -153,15 +153,15 @@
     <div class="row">
         <div class="col-75">
             <div class="container">
-                <form action="/action_page.php">
+                <form action="/ProductServlet?action=pay" method="post">
 
                     <div class="row">
                         <div class="col-50">
                             <h3>Billing Address</h3>
                             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                            <input type="text" id="fname" name="name" placeholder="John M. Doe">
                             <label for="email"><i class="fa fa-envelope"></i> Phone</label>
-                            <input type="text" id="email" name="Phone" placeholder="+121-2524-6472">
+                            <input type="text" id="email" name="phone" placeholder="+121-2524-6472">
                             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
                             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                             <label>
@@ -176,9 +176,6 @@
         </div>
     </div>
 </div>
-<!-- Banner Ends Here -->
-
-
 
 
 <!-- Footer Starts Here -->

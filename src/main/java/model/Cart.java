@@ -10,6 +10,11 @@ public class Cart {
     public Cart() {
     }
 
+    public Cart(int productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
     public Cart(int productId, int quantity, double totalPrice) {
         this.productId = productId;
         this.quantity = quantity;

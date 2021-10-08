@@ -37,7 +37,16 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public boolean create(Order order) {
-        return false;
+        boolean created = false;
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO case_study_module_3.orderdetail (customerId, cartId) VALUES ( ?,?)");
+            statement.setInt(1, order.getCustomerId());
+            statement.setInt(2, order.getCartId());
+            created = statement.executeUpdate()>0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return created;
     }
 
     @Override

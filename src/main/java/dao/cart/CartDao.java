@@ -20,6 +20,15 @@ public class CartDao implements ICartDao {
 
     @Override
     public boolean create(Cart cart) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO case_study_module_3.cart (productId, quatity) VALUES ( ?, ?)");
+            statement.setInt(1, cart.getProductId());
+            statement.setInt(2, cart.getQuantity());
+
+            return statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

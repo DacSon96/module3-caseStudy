@@ -29,7 +29,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public boolean create(Order order) {
-        return false;
+        return orderDao.create(order);
     }
 
     @Override

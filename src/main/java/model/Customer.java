@@ -37,6 +37,8 @@ public class Customer {
         this.email = email;
     }
 
+
+
     public Customer(String name, String phone, String address, String username, String password, int role, String email) {
         this.name = name;
         this.phone = phone;
@@ -110,4 +112,6 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
