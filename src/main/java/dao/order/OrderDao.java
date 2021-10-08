@@ -39,7 +39,7 @@ public class OrderDao implements IOrderDao {
     public boolean create(Order order) {
         boolean created = false;
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO `order` (customerId, cartId) VALUES ( ?,?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO `order` (customerId, cartId) VALUES (?, ?)");
             statement.setInt(1, order.getCustomerId());
             statement.setInt(2, order.getCartId());
             created = statement.executeUpdate()>0;

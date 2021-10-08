@@ -125,7 +125,7 @@ public class AdminCustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        int role = Integer.parseInt(request.getParameter("role"));
+        String role = request.getParameter("role");
         String email = request.getParameter("email");
         customerService.update(id, new Customer(name, phone, address, username, password, role, email));
         try {
@@ -141,7 +141,7 @@ public class AdminCustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        int role = Integer.parseInt(request.getParameter("role"));
+        String role = request.getParameter("role");
         String email = request.getParameter("email");
         customerService.create(new Customer(name, phone, address, username, password, role, email));
         try {

@@ -31,7 +31,7 @@ public class CustomerDao implements ICustomerDao {
                 String address = resultSet.getString("address");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
-                int role = resultSet.getInt("role");
+                String role = resultSet.getString("role");
                 String email = resultSet.getString("email");
                 customers.add(new Customer(id, name, phone, address, username, password, role, email));
             }
@@ -51,7 +51,7 @@ public class CustomerDao implements ICustomerDao {
             statement.setString(3, customer.getAddress());
             statement.setString(4, customer.getUsername());
             statement.setString(5, customer.getPassword());
-            statement.setInt(6, customer.getRole());
+            statement.setString(6, customer.getRole());
             statement.setString(7, customer.getEmail());
             isCreated = statement.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -62,18 +62,15 @@ public class CustomerDao implements ICustomerDao {
 
     public boolean CustomerPay(Customer customer) {
         boolean isCreated = false;
-
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO case_study_module_3.customer ( Name, phone, address) VALUES ( ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO customer (name, phone, address) VALUES (?, ?, ?)");
             statement.setString(1, customer.getName());
             statement.setString(2, customer.getPhone());
             statement.setString(3, customer.getAddress());
-
             isCreated = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return isCreated;
     }
 
@@ -87,7 +84,7 @@ public class CustomerDao implements ICustomerDao {
             statement.setString(3, customer.getAddress());
             statement.setString(4, customer.getUsername());
             statement.setString(5, customer.getPassword());
-            statement.setInt(6, customer.getRole());
+            statement.setString(6, customer.getRole());
             statement.setString(7, customer.getEmail());
             statement.setInt(8, id);
             isUpdated = statement.executeUpdate() > 0;
@@ -124,7 +121,7 @@ public class CustomerDao implements ICustomerDao {
                 String address = resultSet.getString("address");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
-                int role = resultSet.getInt("role");
+                String role = resultSet.getString("role");
                 String email = resultSet.getString("email");
                 customer = new Customer(keyId, name, phone, address, username, password, role, email);
             }
@@ -148,7 +145,7 @@ public class CustomerDao implements ICustomerDao {
                 String address = resultSet.getString("address");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
-                int role = resultSet.getInt("role");
+                String role = resultSet.getString("role");
                 String email = resultSet.getString("email");
                 customers.add(new Customer(id, keyName, phone, address, username, password, role, email));
             }

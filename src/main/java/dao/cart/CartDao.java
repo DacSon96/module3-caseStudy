@@ -21,7 +21,7 @@ public class CartDao implements ICartDao {
     @Override
     public boolean create(Cart cart) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO cart (productId, quantity) VALUES ( ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO cart (productId, quantity) VALUES (?, ?)");
             statement.setInt(1, cart.getProductId());
             statement.setInt(2, cart.getQuantity());
 
