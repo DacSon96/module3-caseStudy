@@ -4,7 +4,7 @@ import dao.IGeneralDao;
 import java.util.List;
 import model.Customer;
 
-public class ICustomerDAO implements IGeneralDao<Customer> {
+public class ICustomerDao implements IGeneralDao<Customer> {
 
 
   @Override
