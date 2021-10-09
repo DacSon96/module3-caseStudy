@@ -84,7 +84,7 @@
             </div>
             <div class="col-md-6">
                 <div class="left-image">
-                    <img src="assets/images/about-us.jpg" alt="">
+                    <img src="../assets/images/about-us.jpg" alt="">
                 </div>
             </div>
             <div class="col-md-6">

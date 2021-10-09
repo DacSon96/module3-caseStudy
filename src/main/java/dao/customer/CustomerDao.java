@@ -60,14 +60,15 @@ public class CustomerDao implements ICustomerDao {
         return isCreated;
     }
 
-    public boolean CustomerPay(Customer customer) {
+    public boolean customerPay(Customer customer) {
         boolean isCreated = false;
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO customer (name, phone, address) VALUES (?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO customer (name, phone, address,cartId) VALUES (?, ?, ?,?)");
             statement.setString(1, customer.getName());
             statement.setString(2, customer.getPhone());
             statement.setString(3, customer.getAddress());
-            isCreated = statement.executeUpdate() > 0;
+            statement.setInt(4, customer.getCartId());
+            isCreated =statement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }

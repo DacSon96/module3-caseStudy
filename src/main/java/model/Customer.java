@@ -9,6 +9,7 @@ public class Customer {
     private String password;
     private String role;
     private String email;
+    private int cartId;
 
     public Customer() {
     }
@@ -37,7 +38,13 @@ public class Customer {
         this.email = email;
     }
 
-
+    public Customer(int id, String name, String phone, String address, int cartId) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.cartId = cartId;
+    }
 
     public Customer(String name, String phone, String address, String username, String password, String role, String email) {
         this.name = name;
@@ -47,6 +54,13 @@ public class Customer {
         this.password = password;
         this.role = role;
         this.email = email;
+    }
+
+    public Customer(String name, String phone, String address, int cartId) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.cartId = cartId;
     }
 
     public int getId() {
@@ -111,6 +125,15 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
 

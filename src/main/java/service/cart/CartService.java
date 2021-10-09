@@ -14,6 +14,11 @@ public class CartService implements ICartService {
     }
 
     @Override
+    public int getByCartId() {
+        return cartDao.getByCartId();
+    }
+
+    @Override
     public boolean create(Cart cart) {
         return cartDao.create(cart);
     }

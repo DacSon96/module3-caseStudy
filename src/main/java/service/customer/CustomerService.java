@@ -2,9 +2,7 @@ package service.customer;
 
 import dao.customer.CustomerDao;
 import dao.customer.ICustomerDao;
-import model.Category;
 import model.Customer;
-import model.Product;
 
 import java.util.List;
 
@@ -21,8 +19,8 @@ public class CustomerService implements ICustomerService {
         return customerDao.create(customer);
     }
 
-    public boolean CustomerPay(Customer customer){
-        return customerDao.CustomerPay(customer);
+    public boolean customerPay(Customer customer){
+        return customerDao.customerPay(customer);
     }
     @Override
     public boolean update(int id, Customer customer) {

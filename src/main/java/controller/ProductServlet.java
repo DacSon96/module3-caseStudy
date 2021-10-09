@@ -2,10 +2,10 @@ package controller;
 
 import model.Cart;
 import model.Customer;
-import model.Order;
 import model.Product;
 import service.cart.CartService;
 import service.customer.CustomerService;
+import service.customer.ICustomerService;
 import service.order.IOrderService;
 import service.order.OrderService;
 import service.product.IProductService;
@@ -15,7 +15,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/ProductServlet")
@@ -23,7 +22,7 @@ public class ProductServlet extends HttpServlet {
     IProductService productService = new ProductService();
     List<Product> products = productService.show();
     CartService cartService = new CartService();
-    CustomerService customerService = new CustomerService();
+    ICustomerService customerService = new CustomerService();
     IOrderService orderService = new OrderService();
 
     @Override
@@ -247,8 +246,9 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        Customer customer = new Customer(name, phone, address);
-        customerService.CustomerPay(customer);
+        int cartId = Integer.parseInt(request.getParameter("cartId"));
+        Customer customer = new Customer(name, phone, address,cartId);
+        customerService.customerPay(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);
@@ -264,6 +264,8 @@ public class ProductServlet extends HttpServlet {
         Cart cart = new Cart(id, quantity);
         cartService.create(cart);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/product/payment.jsp");
+
+        request.setAttribute("cartId", cartService.getByCartId());
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

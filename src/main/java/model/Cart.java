@@ -5,7 +5,9 @@ public class Cart {
     private int productId;
     private int quantity;
     private double totalPrice;
-    Product product;
+    private int customerId;
+    private Product product;
+    private Customer customer;
 
     public Cart() {
     }
@@ -13,6 +15,16 @@ public class Cart {
     public Cart(int productId, int quantity) {
         this.productId = productId;
         this.quantity = quantity;
+    }
+
+    public Cart(int id, int productId, int quantity, double totalPrice, int customerId, Product product, Customer customer) {
+        this.id = id;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.customerId = customerId;
+        this.product = product;
+        this.customer = customer;
     }
 
     public Cart(int productId, int quantity, double totalPrice) {
@@ -43,6 +55,10 @@ public class Cart {
         this.product = product;
     }
 
+    public Cart(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -68,7 +84,7 @@ public class Cart {
     }
 
     public double getTotalPrice() {
-        return totalPrice;
+        return product.getPrice();
     }
 
     public void setTotalPrice(double totalPrice) {
@@ -81,5 +97,17 @@ public class Cart {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

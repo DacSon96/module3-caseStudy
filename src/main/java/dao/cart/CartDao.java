@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartDao implements ICartDao {
@@ -19,9 +20,27 @@ public class CartDao implements ICartDao {
     }
 
     @Override
+    public int getByCartId(){
+        List<Cart> carts = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("select  * from cart");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                Cart cart = new Cart(id);
+                carts.add(cart);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return carts.get(carts.size()-1).getId();
+    }
+
+
+    @Override
     public boolean create(Cart cart) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO cart (productId, quantity) VALUES (?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO cart (productId, quantity) VALUES (?,?)");
             statement.setInt(1, cart.getProductId());
             statement.setInt(2, cart.getQuantity());
 

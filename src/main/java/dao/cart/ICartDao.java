@@ -4,5 +4,9 @@ package dao.cart;
 import dao.IGeneralDao;
 import model.Cart;
 
-public interface ICartDao extends IGeneralDao<Cart> {}
+import java.util.List;
+
+public interface ICartDao extends IGeneralDao<Cart> {
+    int getByCartId();
+}
 
